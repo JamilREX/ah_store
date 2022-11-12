@@ -7,7 +7,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(
+    return Scaffold(
       appBar: AppBar(backgroundColor: Colors.purple,),
       body: (
           ListView.builder(
@@ -33,6 +33,6 @@ class HomeView extends StatelessWidget {
                 );
               })
       ),
-    ));
+    );
   }
 }

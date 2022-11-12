@@ -13,7 +13,7 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(
+    return Scaffold(
         body:Container(
           width: double.infinity,
           height: double.infinity,
@@ -54,10 +54,7 @@ class Welcome extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
 
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Signup()),
-                        );
+                        Get.to(const Signup());
                       },
 
                       style: ButtonStyle(
@@ -91,7 +88,6 @@ class Welcome extends StatelessWidget {
             ],
           ),
         )
-    ),
     );
   }
 }
