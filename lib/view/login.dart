@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 
+import '../controller/login_controller.dart';
+import '../widget/textField.dart';
 import 'homeView.dart';
 
 class Login extends StatelessWidget {
@@ -9,7 +13,9 @@ class Login extends StatelessWidget {
   bool isLoading=false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    Get.put(LoginController());
+    return GetBuilder<LoginController>(
+      builder: (controller) =>Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -29,13 +35,30 @@ class Login extends StatelessWidget {
                     SizedBox(
                       height: 22,
                     ),
-                    // MyTextField("password", "Enter paasword",
-                    //     Icon(Icons.remove_red_eye)),
-                    // MyTextField(
-                    //     labelText: 'password',textHint: 'Enter password' , icon: Icon(Icons.remove_red_eye)),
-                    SizedBox(
-                      height: 5,
+                    MyTextField(
+                      onChanged: (value) {
+                        controller.usernameControllerlogin.text = value;
+                        controller.update();
+                        print(value);
+                      },
+                      textEditingController: controller.usernameControllerlogin,
+                      labelText: 'username',
+                      textHint: 'Enter username',
+                      icon: Icon(Icons.person),
                     ),
+                    SizedBox(
+                      height: 22,),
+                      MyTextField(
+                        onChanged: (value) {
+                          controller.passwordControllerlogin.text = value;
+
+                        },
+                        textEditingController: controller.passwordControllerlogin,
+                        labelText: 'password',
+                        textHint: 'Enter password',
+                        keyboardType: TextInputType.visiblePassword,
+                      ),
+
                     Row(
                       children: [
                         Expanded(
@@ -54,9 +77,7 @@ class Login extends StatelessWidget {
                           flex: 4,
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => HomeView()),);
+                              controller.login();
                             },
                             style: ButtonStyle(
                               backgroundColor:
@@ -117,6 +138,7 @@ class Login extends StatelessWidget {
           ),
         ),
       ),
+      )
     );
   }
 }

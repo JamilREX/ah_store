@@ -16,7 +16,6 @@ class HomeView extends StatelessWidget {
               itemBuilder: (context,i){
                 return Container(
                   height: 200,
-
                   width: double.infinity,
                   margin: EdgeInsets.all(15),
                   decoration: BoxDecoration(
