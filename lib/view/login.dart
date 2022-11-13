@@ -6,7 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../controller/login_controller.dart';
 import '../widget/textField.dart';
-import 'homeView.dart';
+
 
 class Login extends StatelessWidget {
   Login();
@@ -37,11 +37,11 @@ class Login extends StatelessWidget {
                     ),
                     MyTextField(
                       onChanged: (value) {
-                        controller.usernameControllerlogin.text = value;
+                        controller.usernameControllerLogin.text = value;
                         controller.update();
                         print(value);
                       },
-                      textEditingController: controller.usernameControllerlogin,
+                      textEditingController: controller.usernameControllerLogin,
                       labelText: 'username',
                       textHint: 'Enter username',
                       icon: Icon(Icons.person),
@@ -50,23 +50,16 @@ class Login extends StatelessWidget {
                       height: 22,),
                       MyTextField(
                         onChanged: (value) {
-                          controller.passwordControllerlogin.text = value;
+                          controller.passwordControllerLogin.text = value;
 
                         },
-                        textEditingController: controller.passwordControllerlogin,
+                        textEditingController: controller.passwordControllerLogin,
                         labelText: 'password',
                         textHint: 'Enter password',
                         keyboardType: TextInputType.visiblePassword,
                       ),
 
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Container(),
-                        ),
-                        Text("forget password ? ")
-                      ],
-                    ),
+
                     SizedBox(
                       height: 35,
                     ),
@@ -78,7 +71,7 @@ class Login extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {
                               controller.login();
-                              print(controller.usernameControllerlogin);
+                              print(controller.usernameControllerLogin);
                             },
                             style: ButtonStyle(
                               backgroundColor:

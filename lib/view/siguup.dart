@@ -7,7 +7,9 @@ import 'package:get/get_core/src/get_main.dart';
 import '../widget/textField.dart';
 
 class Signup extends StatelessWidget {
-  const Signup({super.key});
+
+
+
 
 
 

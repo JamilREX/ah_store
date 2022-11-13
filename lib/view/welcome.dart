@@ -13,6 +13,8 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
         body:Container(
           width: double.infinity,
@@ -54,7 +56,7 @@ class Welcome extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
 
-                        Get.to(const Signup());
+                        Get.to(Signup());
                       },
 
                       style: ButtonStyle(
