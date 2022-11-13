@@ -78,6 +78,7 @@ class Login extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {
                               controller.login();
+                              print(controller.usernameControllerlogin);
                             },
                             style: ButtonStyle(
                               backgroundColor:
@@ -89,16 +90,15 @@ class Login extends StatelessWidget {
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(27))),
                             ),
-                            child: Text(
+                            child:  Obx(() => controller.loading.value==true?CircularProgressIndicator(color: Colors.white,):Text(
                               "LOGIN",
                               style: TextStyle(fontSize: 22),
                             ),
                           ),
                         ),
-                        Expanded(child: Container()),
-                        SizedBox(
-                          height: 45,
                         ),
+                        Expanded(child: Container()),
+                        SizedBox(height: 45,),
                       ],
                     ),
                   ],

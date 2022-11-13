@@ -24,7 +24,7 @@ class LoginController extends GetxController {
       loading.value = true;
 
       var response = await http.post(
-          Uri.parse(KConstants.domain + 'api/'),
+          Uri.parse(KConstants.domain + 'api/login'),
           body: {
             'username' : usernameControllerlogin.text,
             'password' : passwordControllerlogin.text,
