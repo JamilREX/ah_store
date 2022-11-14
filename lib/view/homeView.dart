@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../models/user_model.dart';
+import '../widget/drawer.dart';
 
 
 class HomeView extends StatelessWidget {
@@ -11,11 +12,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-
-
     UserModel userModel = Get.arguments;
-
-
     Get.lazyPut(() => HomeController());
 
     return GetBuilder<HomeController>(
@@ -26,12 +23,13 @@ class HomeView extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.purple,
         ),
+        drawer: MyDrawer(),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Home view'),
-              Text(controller.userModel.username!),
+              //Text(controller.userModel.username!),
             ],
           ),
         ),

@@ -9,12 +9,9 @@ class AuthView extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(AuthController());
     return GetBuilder<AuthController>(
-
       initState: (_){
         Get.find<AuthController>().auth();
       },
-
-
       builder: (controller) => const Scaffold(
         body: Center(
           child: CircularProgressIndicator(),
