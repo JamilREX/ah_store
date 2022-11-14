@@ -4,6 +4,8 @@
 import 'dart:convert';
 import 'package:ah_store/const/consts.dart';
 import 'package:ah_store/models/user_model.dart';
+import 'package:ah_store/view/auth_view.dart';
+import 'package:ah_store/view/global_view.dart';
 import 'package:ah_store/view/homeView.dart';
 import 'package:ah_store/view/welcome.dart';
 import 'package:get/get.dart';
@@ -22,7 +24,7 @@ class AuthController extends GetxController {
       );
       if(response.statusCode==200){
         UserModel userModel = UserModelReq.fromJson(jsonDecode(response.body)).userModel!;
-        Get.offAll(const HomeView(),arguments: userModel);
+        Get.offAll(const GlobalView(),arguments: userModel);
       }else{
         Get.offAll(const Welcome());
       }

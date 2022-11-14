@@ -12,23 +12,66 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    UserModel userModel = Get.arguments;
+    // UserModel userModel = Get.arguments;
     Get.lazyPut(() => HomeController());
 
     return GetBuilder<HomeController>(
       initState: (_){
-        Get.find<HomeController>().userModel = userModel;
+       // Get.find<HomeController>().userModel = userModel;
       },
       builder: (controller) => Scaffold(
+       // backgroundColor: Colors.grey.shade100,
+        backgroundColor: Colors.red,
         appBar: AppBar(
           backgroundColor: Colors.purple,
         ),
-        drawer: MyDrawer(),
-        body: Center(
+      //  drawer: MyDrawer(),
+        body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Home view'),
+              Container(
+                color: Colors.blue,
+                width: 200,
+                height: 200,
+                margin: EdgeInsets.all(50),
+              ),
+              Container(
+                color: Colors.blue,
+                width: 200,
+                height: 200,
+                margin: EdgeInsets.all(50),
+              ),
+              Container(
+                color: Colors.blue,
+                width: 200,
+                height: 200,
+                margin: EdgeInsets.all(50),
+              ),
+              Container(
+                color: Colors.blue,
+                width: 200,
+                height: 200,
+                margin: EdgeInsets.all(50),
+              ),
+              Container(
+                color: Colors.blue,
+                width: 200,
+                height: 200,
+                margin: EdgeInsets.all(50),
+              ),
+              Container(
+                color: Colors.blue,
+                width: 200,
+                height: 200,
+                margin: EdgeInsets.all(50),
+              ),
+              Container(
+                color: Colors.blue,
+                width: 200,
+                height: 200,
+                margin: EdgeInsets.all(50),
+              ),
               //Text(controller.userModel.username!),
             ],
           ),

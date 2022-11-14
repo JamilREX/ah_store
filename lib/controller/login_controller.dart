@@ -1,9 +1,6 @@
-
-
 import 'dart:convert';
-
 import 'package:ah_store/const/consts.dart';
-import 'package:ah_store/view/homeView.dart';
+import 'package:ah_store/view/auth_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -38,7 +35,7 @@ class LoginController extends GetxController {
 
 
         print(token);
-        Get.offAll(HomeView());
+        Get.offAll(const AuthView());
       } else {
         Get.snackbar('خطأ', jsonDecode(response.body)['msg']);
         print('body = ${response.body}');
