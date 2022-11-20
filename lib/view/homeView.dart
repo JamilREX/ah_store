@@ -1,105 +1,111 @@
 import 'package:ah_store/controller/home_controller.dart';
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
-import '../models/user_model.dart';
-import '../widget/drawer.dart';
 
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
 
-    // UserModel userModel = Get.arguments;
     Get.lazyPut(() => HomeController());
 
     return GetBuilder<HomeController>(
       initState: (_){
-       // Get.find<HomeController>().userModel = userModel;
+       Get.find<HomeController>().getCategories();
       },
       builder: (controller) => Scaffold(
-       // backgroundColor: Colors.grey.shade100,
-        backgroundColor: Colors.red,
+       //backgroundColor: Colors.grey,
         appBar: AppBar(
+          centerTitle: true,
+          title: const Text('Home'),
           backgroundColor: Colors.purple,
         ),
       //  drawer: MyDrawer(),
-        body: SingleChildScrollView(
+        body: Obx(() => controller.loading.value==true?Center(child: CircularProgressIndicator()):SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                color: Colors.blue,
-                width: 200,
-                height: 200,
-                margin: EdgeInsets.all(50),
-              ),
-              Container(
-                color: Colors.blue,
-                width: 200,
-                height: 200,
-                margin: EdgeInsets.all(50),
-              ),
-              Container(
-                color: Colors.blue,
-                width: 200,
-                height: 200,
-                margin: EdgeInsets.all(50),
-              ),
-              Container(
-                color: Colors.blue,
-                width: 200,
-                height: 200,
-                margin: EdgeInsets.all(50),
-              ),
-              Container(
-                color: Colors.blue,
-                width: 200,
-                height: 200,
-                margin: EdgeInsets.all(50),
-              ),
-              Container(
-                color: Colors.blue,
-                width: 200,
-                height: 200,
-                margin: EdgeInsets.all(50),
-              ),
-              Container(
-                color: Colors.blue,
-                width: 200,
-                height: 200,
-                margin: EdgeInsets.all(50),
-              ),
-              //Text(controller.userModel.username!),
+              Text('Categories'),
+              SizedBox(height: 50),
+              controller.homeCategoryModelList!=null && controller.homeCategoryModelList.isNotEmpty?ListView.builder(
+                shrinkWrap: true,
+                itemCount: controller.homeCategoryModelList.length,
+                itemBuilder: (context , index){
+                  return Text(controller.homeCategoryModelList[index].categoryName.toString());
+                },
+
+
+
+
+              ):SizedBox()
+
+
+
             ],
           ),
+        )),
+
+                // ListView.builder(
+                //     physics: const BouncingScrollPhysics(),
+                //     itemCount: 5,
+                //     itemBuilder: (context,i){
+                //       return Stack(
+                //           children: [InkWell(
+                //             onTap: (){
+                //               Get.to(const Lab());
+                //             },
+                //             child: Container(
+                //               height: 200,
+                //               width: double.infinity,
+                //               margin: const EdgeInsets.all(15),
+                //               decoration: BoxDecoration(
+                //                 borderRadius: BorderRadius.circular(15),
+                //                 color: Colors.white,
+                //                 boxShadow: [
+                //                   BoxShadow(
+                //                       blurStyle: BlurStyle.solid,
+                //                       blurRadius: 10.0,
+                //                       color: Colors.black12.withAlpha(30)
+                //                   ),
+                //                 ],
+                //               ),
+                //               child: Text(controller.userModel.fullName.toString()),
+                //             ),
+                //           ),
+                //             Positioned(
+                //               child: Container(
+                //                 child: Image.network('https://freesvg.org/img/metalmarious_Laptop.png'),
+                //                 width: 175,
+                //                 height: 150,
+                //                 // color: Colors.green,
+                //               ),
+                //               top: 39,
+                //               left: 25,),
+                //             Positioned(
+                //                 top: 50,
+                //                 right: 35,
+                //                 child: Column(
+                //                   children: [
+                //                     const Text("Labtop hp"),
+                //                     const Text("*******"),
+                //
+                //                   ],
+                //                 ))
+                //           ]
+                //       );
+                //     }),
         ),
-        // (
-        //     ListView.builder(
-        //         physics: BouncingScrollPhysics(),
-        //         itemCount: 5,
-        //         itemBuilder: (context,i){
-        //           return Container(
-        //             height: 200,
-        //             width: double.infinity,
-        //             margin: EdgeInsets.all(15),
-        //             decoration: BoxDecoration(
-        //               borderRadius: BorderRadius.circular(15),
-        //               color: Colors.white,
-        //               boxShadow: [
-        //                 BoxShadow(
-        //                     blurStyle: BlurStyle.normal,
-        //                     blurRadius: 5.0,
-        //                     color: Colors.purple
-        //                 ),
-        //               ],
-        //             ),
-        //           );
-        //         })
-        // ),
-      ),
-    );
+      );
+
+  }
+}
+class Lab extends StatelessWidget {
+  const Lab({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold();
   }
 }

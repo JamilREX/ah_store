@@ -25,9 +25,20 @@ class GlobalController extends GetxController {
 
   List<Widget> screens = [
     HomeView(),
-    Scaffold(),
-    Scaffold(),
-    Scaffold(),
+    Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.purple,
+      ),
+      body: Container(child: Text("screen 2 ",style: TextStyle(fontSize: 25),),),
+    ),
+    Scaffold(appBar: AppBar(
+      backgroundColor: Colors.purple,
+    ),
+    body: Container(child: Text("screen 3 ",style: TextStyle(fontSize: 25),),),),
+    Scaffold(appBar: AppBar(
+      backgroundColor: Colors.purple,
+    ),
+    body: Container(child: Text("screen 4 ",style: TextStyle(fontSize: 25),),),),
   ];
 
 

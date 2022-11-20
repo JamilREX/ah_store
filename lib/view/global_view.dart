@@ -25,19 +25,21 @@ class GlobalView extends StatelessWidget {
         //extendBody: true,
         backgroundColor: Colors.transparent,
         bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: Colors.transparent,
-
-          animationDuration: Duration(milliseconds: 300),
+          color: Colors.white,
+          buttonBackgroundColor: Colors.purple,
+          backgroundColor: Colors.white,
+          animationCurve: Curves.easeInOut,
+          animationDuration: const Duration(milliseconds: 400),
           onTap: (value){
             controller.changeIndex(value);
-            controller.navbarTrigger(value);
+           controller.navbarTrigger(value);
           },
-          buttonBackgroundColor: Colors.purple,
+         // buttonBackgroundColor: Colors.purple,
           items: [
-            Icon(Icons.access_time , color: controller.index==0?Colors.white:Colors.black),
-            Icon(Icons.access_time, color: controller.index==1?Colors.white:Colors.black),
-            Icon(Icons.access_time, color: controller.index==2?Colors.white:Colors.black),
-            Icon(Icons.access_time, color: controller.index==3?Colors.white:Colors.black),
+            Icon(Icons.home , color: controller.index==0?Colors.white:Colors.black),
+            Icon(Icons.production_quantity_limits, color: controller.index==1?Colors.white:Colors.black),
+            Icon(Icons.ac_unit, color: controller.index==2?Colors.white:Colors.black),
+            Icon(Icons.person_pin, color: controller.index==3?Colors.white:Colors.black),
           ],
         ),
         body: controller.screens[controller.index],

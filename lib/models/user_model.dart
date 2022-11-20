@@ -1,5 +1,7 @@
 
 
+import 'package:get/get.dart';
+
 class UserModelReq {
   String? status;
   UserModel? userModel;
@@ -21,7 +23,7 @@ class UserModelReq {
   }
 }
 
-class UserModel {
+class UserModel extends GetxController{
   int? id;
   String? username;
   String? fullName;
