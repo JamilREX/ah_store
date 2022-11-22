@@ -1,6 +1,6 @@
 
 
-import 'package:ah_store/view/homeView.dart';
+import 'package:ah_store/view/home_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../models/user_model.dart';

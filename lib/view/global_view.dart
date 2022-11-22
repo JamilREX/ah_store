@@ -2,7 +2,7 @@
 
 import 'package:ah_store/controller/global_controller.dart';
 import 'package:ah_store/models/user_model.dart';
-import 'package:ah_store/view/homeView.dart';
+import 'package:ah_store/view/home_view.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 import 'package:flutter/material.dart';

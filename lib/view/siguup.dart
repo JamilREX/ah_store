@@ -1,5 +1,5 @@
 import 'package:ah_store/controller/signup_controller.dart';
-import 'package:ah_store/view/homeView.dart';
+import 'package:ah_store/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';

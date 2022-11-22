@@ -42,6 +42,7 @@ dependencies:
   get_storage: ^2.0.3
   curved_navigation_bar: ^1.0.3
   flutter_staggered_animations: ^1.1.1
+  flutter_neumorphic:
 
 dev_dependencies:
   flutter_test:

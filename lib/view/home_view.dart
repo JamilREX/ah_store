@@ -1,3 +1,4 @@
+import 'package:ah_store/components/category_card.dart';
 import 'package:ah_store/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -30,12 +31,16 @@ class HomeView extends StatelessWidget {
             children: [
               Text('Categories'),
               SizedBox(height: 50),
-              controller.homeCategoryModelList!=null && controller.homeCategoryModelList.isNotEmpty?ListView.builder(
+              controller.homeCategoryModelList.isNotEmpty?GridView.builder(
                 shrinkWrap: true,
                 itemCount: controller.homeCategoryModelList.length,
                 itemBuilder: (context , index){
-                  return Text(controller.homeCategoryModelList[index].categoryName.toString());
-                },
+                  return CategoryCard(categoryModel: controller.homeCategoryModelList[index]);
+                }, gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  childAspectRatio: 3 / 2.5,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20),
 
 
 
