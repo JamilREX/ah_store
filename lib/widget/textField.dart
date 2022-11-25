@@ -42,22 +42,22 @@ class _MyTextFieldState extends State<MyTextField> {
       keyboardType: widget.keyboardType,
       decoration: InputDecoration(
         hintText: widget.textHint,
-        labelStyle: TextStyle(color: Colors.black26),
-        hintStyle: TextStyle(color: Colors.black26),
+        labelStyle: const TextStyle(color: Colors.black26),
+        hintStyle: const TextStyle(color: Colors.black26),
         labelText: widget.labelText,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(27),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             style: BorderStyle.solid,
           ),
         ),
         filled: true,
-        contentPadding: EdgeInsets.all(16),
+        contentPadding: const EdgeInsets.all(16),
         fillColor: Colors.white24,
         suffixIcon: widget.keyboardType == TextInputType.visiblePassword
             ? hidden == true
                 ? InkWell(
-                    child: Icon(Icons.visibility_off),
+                    child: const Icon(Icons.visibility_off),
                     onTap: () {
                       setState(() {
                         hidden = false;
@@ -65,7 +65,7 @@ class _MyTextFieldState extends State<MyTextField> {
                     },
                   )
                 : InkWell(
-                    child: Icon(Icons.visibility),
+                    child: const Icon(Icons.visibility),
                     onTap: () {
                       setState(() {
                         hidden = true;

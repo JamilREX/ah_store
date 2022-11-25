@@ -2,7 +2,6 @@ import 'package:ah_store/view/siguup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import 'login.dart';
 
@@ -12,19 +11,19 @@ class Welcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
+        body: SizedBox(
       width: double.infinity,
       height: double.infinity,
       child: Stack(
         children: [
-          Container(
+          SizedBox(
             width: double.infinity,
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 75,
                 ),
-                Text(
+                const Text(
                   "WELCOME",
                   style: TextStyle(
                       fontSize: 25,
@@ -32,13 +31,13 @@ class Welcome extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       letterSpacing: 2),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 SvgPicture.asset(
                   'assets/images/chat.svg',
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 35,
                 ),
                 ElevatedButton(
@@ -51,16 +50,16 @@ class Welcome extends StatelessWidget {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.purple),
                     padding: MaterialStateProperty.all(
-                        EdgeInsets.symmetric(horizontal: 78, vertical: 10)),
+                        const EdgeInsets.symmetric(horizontal: 78, vertical: 10)),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(27))),
                   ),
-                  child: Text(
+                  child: const Text(
                     "LOGIN",
                     style: TextStyle(fontSize: 22),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 22,
                 ),
                 ElevatedButton(
@@ -71,7 +70,7 @@ class Welcome extends StatelessWidget {
                     backgroundColor:
                         MaterialStateProperty.all(Colors.purple[100]),
                     padding: MaterialStateProperty.all(
-                        EdgeInsets.symmetric(horizontal: 77, vertical: 13)),
+                        const EdgeInsets.symmetric(horizontal: 77, vertical: 13)),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(27))),
                   ),
@@ -86,13 +85,13 @@ class Welcome extends StatelessWidget {
           Positioned(
               top: 0,
               left: 0,
-              child: Container(
+              child: SizedBox(
                   width: 150,
                   child: Image.asset('assets/images/main_top.png'))),
           Positioned(
               left: 0,
               bottom: 0,
-              child: Container(
+              child: SizedBox(
                   width: 100,
                   child: Image.asset('assets/images/main_bottom.png'))),
         ],

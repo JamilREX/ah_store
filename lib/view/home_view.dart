@@ -26,30 +26,37 @@ class HomeView extends StatelessWidget {
           backgroundColor: Colors.purple,
         ),
       //  drawer: MyDrawer(),
-        body: Obx(() => controller.loading.value==true?Center(child: CircularProgressIndicator()):SingleChildScrollView(
-          child: Column(
-            children: [
-              Text('Categories'),
-              SizedBox(height: 50),
-              controller.homeCategoryModelList.isNotEmpty?GridView.builder(
-                shrinkWrap: true,
-                itemCount: controller.homeCategoryModelList.length,
-                itemBuilder: (context , index){
-                  return CategoryCard(categoryModel: controller.homeCategoryModelList[index]);
-                }, gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
-                  childAspectRatio: 3 / 2.5,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20),
+        body: Obx(() => controller.loading.value==true?const Center(child: CircularProgressIndicator()):SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+                   const Text('Category',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+
+                const SizedBox(height: 50),
+                controller.homeCategoryModelList.isNotEmpty?GridView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.homeCategoryModelList.length,
+                  itemBuilder: (context , index){
+                    return CategoryCard(fullCategory: controller.homeCategoryModelList[index]);
+                  }, gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    //mainAxisExtent:150,
+                    childAspectRatio: 3 / 2.8,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 20),
 
 
 
 
-              ):SizedBox()
+                ):const SizedBox()
 
 
 
-            ],
+              ],
+            ),
           ),
         )),
 

@@ -26,7 +26,7 @@ class SignupController extends GetxController {
     } else {
       loading.value = true;
       var response =
-          await http.post(Uri.parse(KConstants.domain + 'api/create'), body: {
+          await http.post(Uri.parse('${KConstants.domain}api/create'), body: {
         'username': usernameController.text,
         'password': passwordController.text,
         'email': emailController.text,
@@ -36,20 +36,20 @@ class SignupController extends GetxController {
       if (response.statusCode == 201 || response.statusCode == 200) {
         String token = jsonDecode(response.body)['data']['token'];
         await GetStorage().write('token', token);
-        Get.offAll(AuthView());
+        Get.offAll(const AuthView());
       } else {
         print(response.body);
         Get.snackbar(
           '',
          '',
           backgroundColor: Colors.purple,
-          titleText: Text(
+          titleText: const Text(
             'خطأ',
             style: TextStyle(color: Colors.white),
           ),
           messageText: Text(
             jsonDecode(response.body).toString(),
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
         );
       }

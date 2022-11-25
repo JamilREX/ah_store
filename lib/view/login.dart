@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 
 import '../controller/login_controller.dart';
@@ -16,7 +15,7 @@ class Login extends StatelessWidget {
     Get.put(LoginController());
     return GetBuilder<LoginController>(
       builder: (controller) =>Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: SingleChildScrollView(
@@ -27,12 +26,12 @@ class Login extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 350,
                     ),
                     // MyTextField(
                     //     labelText: 'UserName',textHint: 'Enter UserName' , icon: Icon(Icons.account_circle_sharp)),
-                    SizedBox(
+                    const SizedBox(
                       height: 22,
                     ),
                     MyTextField(
@@ -44,9 +43,9 @@ class Login extends StatelessWidget {
                       textEditingController: controller.usernameControllerLogin,
                       labelText: 'username',
                       textHint: 'Enter username',
-                      icon: Icon(Icons.person),
+                      icon: const Icon(Icons.person),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 22,),
                       MyTextField(
                         onChanged: (value) {
@@ -60,7 +59,7 @@ class Login extends StatelessWidget {
                       ),
 
 
-                    SizedBox(
+                    const SizedBox(
                       height: 35,
                     ),
                     Row(
@@ -77,13 +76,13 @@ class Login extends StatelessWidget {
                               backgroundColor:
                               MaterialStateProperty.all(Colors.purple),
                               padding: MaterialStateProperty.all(
-                                  EdgeInsets.symmetric(
+                                  const EdgeInsets.symmetric(
                                       horizontal: 79, vertical: 10)),
                               shape: MaterialStateProperty.all(
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(27))),
                             ),
-                            child:  Obx(() => controller.loading.value==true?CircularProgressIndicator(color: Colors.white,):Text(
+                            child:  Obx(() => controller.loading.value==true?const CircularProgressIndicator(color: Colors.white,):const Text(
                               "LOGIN",
                               style: TextStyle(fontSize: 22),
                             ),
@@ -91,7 +90,7 @@ class Login extends StatelessWidget {
                         ),
                         ),
                         Expanded(child: Container()),
-                        SizedBox(height: 45,),
+                        const SizedBox(height: 45,),
                       ],
                     ),
                   ],
@@ -100,21 +99,21 @@ class Login extends StatelessWidget {
               Positioned(
                   top: 0,
                   left: 0,
-                  child: Container(
+                  child: SizedBox(
                       width: 175,
                       height: 200,
                       child: Image.asset('assets/images/main_top.png'))),
               Positioned(
                   left: 200,
                   top: 100,
-                  child: Container(
+                  child: SizedBox(
                       width: 200,
                       height: 200,
                       child: SvgPicture.asset('assets/images/login.svg'))),
-              Positioned(
+              const Positioned(
                 left: 35,
                 top: 260,
-                child: Container(
+                child: SizedBox(
                   width: 100,
                   height: 100,
                   child: Text(

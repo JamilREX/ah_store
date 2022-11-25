@@ -2,7 +2,6 @@
 
 import 'package:ah_store/controller/global_controller.dart';
 import 'package:ah_store/models/user_model.dart';
-import 'package:ah_store/view/home_view.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 import 'package:flutter/material.dart';
@@ -14,8 +13,12 @@ class GlobalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    UserModel userModel = Get.arguments;
+    UserModel userModel = UserModel();
+    try{
+      userModel = Get.arguments;
+    }catch(e){
+      print(e);
+    }
     Get.lazyPut(() => GlobalController());
     return GetBuilder<GlobalController>(
       initState: (_){

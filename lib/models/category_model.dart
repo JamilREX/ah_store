@@ -11,16 +11,16 @@ class CategoryModelReq {
     if (json['data'] != null) {
       categoryModel = <CategoryModel>[];
       json['data'].forEach((v) {
-        categoryModel!.add(new CategoryModel.fromJson(v));
+        categoryModel!.add(CategoryModel.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    if (this.categoryModel != null) {
-      data['data'] = this.categoryModel!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['status'] = status;
+    if (categoryModel != null) {
+      data['data'] = categoryModel!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -52,13 +52,13 @@ class CategoryModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['category_id'] = this.categoryId;
-    data['category_name'] = this.categoryName;
-    data['photo'] = this.photo;
-    data['icon'] = this.icon;
-    data['parent_id'] = this.parentId;
-    data['parent_name'] = this.parentName;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['category_id'] = categoryId;
+    data['category_name'] = categoryName;
+    data['photo'] = photo;
+    data['icon'] = icon;
+    data['parent_id'] = parentId;
+    data['parent_name'] = parentName;
     return data;
   }
 }

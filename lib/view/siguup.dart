@@ -3,7 +3,6 @@ import 'package:ah_store/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../widget/textField.dart';
 
@@ -27,7 +26,7 @@ class Signup extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 350,
                     ),
                     //MyTextField("Name","Enter Name",Icon(Icons.accessibility_new)),
@@ -43,9 +42,9 @@ class Signup extends StatelessWidget {
                       textEditingController: controller.fullNameController,
                       labelText: 'Full name',
                       textHint: 'Enter full name',
-                      icon: Icon(Icons.accessibility_new),
+                      icon: const Icon(Icons.accessibility_new),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 22,
                     ),
                     // MyTextField("Email", "Enter Email", Icon(Icons.email)),
@@ -56,9 +55,9 @@ class Signup extends StatelessWidget {
                       textEditingController: controller.usernameController,
                       labelText: 'username',
                       textHint: 'Enter username',
-                      icon: Icon(Icons.person),
+                      icon: const Icon(Icons.person),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 22,
                     ),
                     // MyTextField("UserName", "Enter UserName", Icon(Icons.account_circle_sharp)),
@@ -70,8 +69,8 @@ class Signup extends StatelessWidget {
                         textEditingController: controller.emailController,
                         labelText: 'email',
                         textHint: 'Enter email',
-                        icon: Icon(Icons.email)),
-                    SizedBox(
+                        icon: const Icon(Icons.email)),
+                    const SizedBox(
                       height: 22,
                     ),
                     // MyTextField("password", "Enter password", Icon(Icons.remove_red_eye)),
@@ -84,10 +83,10 @@ class Signup extends StatelessWidget {
                       textHint: 'Enter password',
                       keyboardType: TextInputType.visiblePassword,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 35,
                     ),
                     Row(
@@ -98,19 +97,19 @@ class Signup extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {
                               controller.signUp();
-                              Get.offAll(HomeView());
+                              Get.offAll(const HomeView());
                             },
                             style: ButtonStyle(
                               backgroundColor:
                                   MaterialStateProperty.all(Colors.purple),
                               padding: MaterialStateProperty.all(
-                                  EdgeInsets.symmetric(vertical: 10)),
+                                  const EdgeInsets.symmetric(vertical: 10)),
                               shape: MaterialStateProperty.all(
                                   RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(27))),
                             ),
-                            child: Obx(() => controller.loading.value==true?CircularProgressIndicator(color: Colors.white,):Text(
+                            child: Obx(() => controller.loading.value==true?const CircularProgressIndicator(color: Colors.white,):const Text(
                               "SIGN UP",
                               style: TextStyle(fontSize: 22),
                             ),)
@@ -125,7 +124,7 @@ class Signup extends StatelessWidget {
               Positioned(
                   left: 0,
                   top: 0,
-                  child: Container(
+                  child: SizedBox(
                     width: 175,
                     height: 200,
                     child: Image.asset('assets/images/main_top.png'),
@@ -133,14 +132,14 @@ class Signup extends StatelessWidget {
               Positioned(
                   left: 200,
                   top: 100,
-                  child: Container(
+                  child: SizedBox(
                       width: 200,
                       height: 200,
                       child: SvgPicture.asset('assets/images/signup.svg'))),
-              Positioned(
+              const Positioned(
                 left: 35,
                 top: 260,
-                child: Container(
+                child: SizedBox(
                   width: 120,
                   height: 100,
                   child: Text(

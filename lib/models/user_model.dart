@@ -10,14 +10,14 @@ class UserModelReq {
 
   UserModelReq.fromJson(Map<String, dynamic> json) {
     status = json['status'];
-    userModel = json['data'] != null ? new UserModel.fromJson(json['data']) : null;
+    userModel = json['data'] != null ? UserModel.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    if (this.userModel != null) {
-      data['data'] = this.userModel!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['status'] = status;
+    if (userModel != null) {
+      data['data'] = userModel!.toJson();
     }
     return data;
   }
@@ -61,17 +61,17 @@ class UserModel extends GetxController{
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['username'] = this.username;
-    data['full_name'] = this.fullName;
-    data['user_type'] = this.userType;
-    data['avatar'] = this.avatar;
-    data['balance'] = this.balance;
-    data['active'] = this.active;
-    data['title'] = this.title;
-    data['logo'] = this.logo;
-    data['token'] = this.token;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['username'] = username;
+    data['full_name'] = fullName;
+    data['user_type'] = userType;
+    data['avatar'] = avatar;
+    data['balance'] = balance;
+    data['active'] = active;
+    data['title'] = title;
+    data['logo'] = logo;
+    data['token'] = token;
     return data;
   }
 }

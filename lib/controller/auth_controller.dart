@@ -4,9 +4,7 @@
 import 'dart:convert';
 import 'package:ah_store/const/consts.dart';
 import 'package:ah_store/models/user_model.dart';
-import 'package:ah_store/view/auth_view.dart';
 import 'package:ah_store/view/global_view.dart';
-import 'package:ah_store/view/home_view.dart';
 import 'package:ah_store/view/welcome.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -19,7 +17,7 @@ class AuthController extends GetxController {
       Get.offAll(const Welcome());
     } else {
       var response = await http.get(
-        Uri.parse(KConstants.domain + 'api/me'),
+        Uri.parse('${KConstants.domain}api/me'),
         headers: {'Authorization': 'Bearer $token'}
       );
       if(response.statusCode==200){

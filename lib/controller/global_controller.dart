@@ -9,8 +9,8 @@ class GlobalController extends GetxController {
 
 
   UserModel userModel = UserModel();
-
   int index = 0;
+
 
   changeIndex(int value){
     index = value;
@@ -24,21 +24,21 @@ class GlobalController extends GetxController {
   }
 
   List<Widget> screens = [
-    HomeView(),
+    const HomeView(),
     Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple,
       ),
-      body: Container(child: Text("screen 2 ",style: TextStyle(fontSize: 25),),),
+      body: Container(child: const Text("screen 2 ",style: TextStyle(fontSize: 25),),),
     ),
     Scaffold(appBar: AppBar(
       backgroundColor: Colors.purple,
     ),
-    body: Container(child: Text("screen 3 ",style: TextStyle(fontSize: 25),),),),
+    body: Container(child: const Text("screen 3 ",style: TextStyle(fontSize: 25),),),),
     Scaffold(appBar: AppBar(
       backgroundColor: Colors.purple,
     ),
-    body: Container(child: Text("screen 4 ",style: TextStyle(fontSize: 25),),),),
+    body: Container(child: const Text("screen 4 ",style: TextStyle(fontSize: 25),),),),
   ];
 
 
