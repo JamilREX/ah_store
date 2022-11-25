@@ -1,27 +1,27 @@
 import 'package:ah_store/const/consts.dart';
 import 'package:ah_store/models/category_model.dart';
+import 'package:ah_store/view/category_content_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class CategoryCard extends StatelessWidget {
-
   final CategoryModel categoryModel;
 
-
-  const CategoryCard({Key? key , required this.categoryModel}) : super(key: key);
+  const CategoryCard({Key? key, required this.categoryModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return NeumorphicButton(
-      onPressed: (){
-        
+      onPressed: () {
+        Get.to(CategoryContentView());
       },
       child: Column(
         children: [
           Image.network(KConstants.domain + categoryModel.photo.toString()),
           const SizedBox(height: 16),
-          Text(categoryModel.categoryName.toString()),
+          Text(categoryModel.parentName.toString()),
         ],
       ),
     );

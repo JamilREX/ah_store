@@ -27,29 +27,36 @@ class HomeView extends StatelessWidget {
         ),
       //  drawer: MyDrawer(),
         body: Obx(() => controller.loading.value==true?Center(child: CircularProgressIndicator()):SingleChildScrollView(
-          child: Column(
-            children: [
-              Text('Categories'),
-              SizedBox(height: 50),
-              controller.homeCategoryModelList.isNotEmpty?GridView.builder(
-                shrinkWrap: true,
-                itemCount: controller.homeCategoryModelList.length,
-                itemBuilder: (context , index){
-                  return CategoryCard(categoryModel: controller.homeCategoryModelList[index]);
-                }, gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
-                  childAspectRatio: 3 / 2.5,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+                   Text('Category',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+
+                SizedBox(height: 50),
+                controller.homeCategoryModelList.isNotEmpty?GridView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.homeCategoryModelList.length,
+                  itemBuilder: (context , index){
+                    return CategoryCard(categoryModel: controller.homeCategoryModelList[index]);
+                  }, gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    mainAxisExtent:200,
+                    childAspectRatio: 3 / 2.5,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20),
 
 
 
 
-              ):SizedBox()
+                ):SizedBox()
 
 
 
-            ],
+              ],
+            ),
           ),
         )),
 
