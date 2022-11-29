@@ -12,7 +12,9 @@ import 'package:http/http.dart' as http;
 class AuthController extends GetxController {
 
   auth()async{
+
     var token = await GetStorage().read('token');
+    print(token);
     if(token==null){
       Get.offAll(const Welcome());
     } else {
@@ -22,6 +24,7 @@ class AuthController extends GetxController {
       );
       if(response.statusCode==200){
         UserModel userModel = UserModelReq.fromJson(jsonDecode(response.body)).userModel!;
+        print(userModel.username);
         Get.offAll(const GlobalView(),arguments: userModel);
       }else{
         Get.offAll(const Welcome());

@@ -1,5 +1,6 @@
 
 
+import 'package:ah_store/view/cart_view.dart';
 import 'package:ah_store/view/home_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -25,12 +26,7 @@ class GlobalController extends GetxController {
 
   List<Widget> screens = [
     const HomeView(),
-    Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.purple,
-      ),
-      body: Container(child: const Text("screen 2 ",style: TextStyle(fontSize: 25),),),
-    ),
+    const CartView(),
     Scaffold(appBar: AppBar(
       backgroundColor: Colors.purple,
     ),

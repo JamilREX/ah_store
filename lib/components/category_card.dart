@@ -8,8 +8,9 @@ import 'dart:ui';
 
 class CategoryCard extends StatelessWidget {
   final FullCategory fullCategory;
+  final int fullCategoryIndex;
 
-  const CategoryCard({Key? key, required this.fullCategory}) : super(key: key);
+  const CategoryCard({Key? key, required this.fullCategory , required this.fullCategoryIndex}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class CategoryCard extends StatelessWidget {
           }
         }
 
-        Get.to(CategoryContentView(childrenCategory: temp , fullCategory: fullCategory),
+        Get.to(CategoryContentView(childrenCategory: temp , fullCategory: fullCategory, fullCategoryIndex: fullCategoryIndex,),
             preventDuplicates: false);
 
         // Get.to(const CategoryContentView());

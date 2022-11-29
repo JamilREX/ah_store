@@ -40,7 +40,7 @@ class HomeView extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: controller.homeCategoryModelList.length,
                   itemBuilder: (context , index){
-                    return CategoryCard(fullCategory: controller.homeCategoryModelList[index]);
+                    return CategoryCard(fullCategory: controller.homeCategoryModelList[index] , fullCategoryIndex: index,);
                   }, gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 200,
                     //mainAxisExtent:150,

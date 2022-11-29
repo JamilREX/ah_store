@@ -21,4 +21,23 @@ class RequestHelper {
       return response;
     }
   }
+  static Future<http.Response> post({bool authRequire = true, required String url , required body})async{
+    String token;
+    if(authRequire==true){
+      token = await GetStorage().read('token');
+      Map<String, String> headers = {
+        'ZD_TOKEN': '2e4f7961133be1e08fffdb18634a453c',
+        'Authorization': 'Bearer $token'
+      };
+      print(url);
+      http.Response response = await http.post(Uri.parse(url) , headers: headers , body: body);
+      return response;
+    }else{
+      Map<String, String> headers = {
+        'ZD_TOKEN': '2e4f7961133be1e08fffdb18634a453c',
+      };
+      http.Response response = await http.post(Uri.parse(url) , headers: headers , body: body);
+      return response;
+    }
+  }
 }

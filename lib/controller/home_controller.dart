@@ -10,18 +10,42 @@ class HomeController extends GetxController {
  // UserModel userModel = UserModel();
 
   var loading = false.obs;
+  var favLoading = false.obs;
   AllModel allModel = AllModel();
-   List<FullCategory> categoryModelList = [];
-   List<FullCategory> homeCategoryModelList = [];
+  var categoryModelList = [].obs;
+  var homeCategoryModelList = [].obs ;
+  var productChanging = '0'.obs;
+
+
+  // post /api/favourite/add
+  // requires fields in body : product_id:44
+   changeFavourite(String productId)async{
+     productChanging.value = productId;
+     favLoading.value = true;
+     var response =await RequestHelper.post(url: '${KConstants.domain}api/favorite/add' , body: {
+       'product_id' : productId,
+     });
+     print(response.statusCode);
+     print(response.body);
+     if(response.statusCode==201){
+       await getCategories();
+     }
+     favLoading.value = false;
+     productChanging.value = '0';
+   }
+
+
+
 
   getCategories() async {
-    homeCategoryModelList = [];
+    homeCategoryModelList.value = [];
     loading.value = true;
     http.Response response = await RequestHelper.get(
         url: '${KConstants.domain}api/product/all');
     if (response.statusCode == 200) {
+      print(response.body);
       allModel = AllModelReq.fromJson(jsonDecode(response.body)).allModel!;
-      categoryModelList = allModel.fullCategoryList!;
+      categoryModelList.value = allModel.fullCategoryList!;
       for (var item in categoryModelList) {
         if (item.parentId == 0) {
           homeCategoryModelList.add(item);
