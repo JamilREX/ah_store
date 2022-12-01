@@ -55,7 +55,7 @@ class CategoryCard extends StatelessWidget {
                     child: Container(
                       color: Colors.purple.withOpacity(0.5),
                       height: 30,
-                      width: 165,
+                      width: 185,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

@@ -34,19 +34,19 @@ class CartController extends GetxController {
       OrderItem newOrderItem = OrderItem(quantity: 1 , productId: product.id , product: product);
       cartModel.value.orderItems!.add(newOrderItem);
     }else{
-      // todo show snackBar that the item is exist Already
+      Get.snackbar('No', 'This product is already in the cart !',snackPosition:SnackPosition.BOTTOM);
     }
     GetStorage().write('cartModel', cartModel);
   }
   changeQuantity(String type , Products product){
     // type = inc or dec
-    for(var item in cartModel.value.orderItems!){
-      if(item.productId==product.id){
-        if(type=='inc'){
-          item.quantity = (item.quantity!+1);
-        }else{
-          if(item.quantity!=1){
-            item.quantity = (item.quantity!-1);
+    for(var item in cartModel.value.orderItems!) {
+      if (item.productId == product.id) {
+        if (type == 'inc') {
+          item.quantity = (item.quantity! + 1);
+        } else {
+          if (item.quantity != 1) {
+            item.quantity = (item.quantity! - 1);
           }
         }
       }
