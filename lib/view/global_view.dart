@@ -13,6 +13,7 @@ class GlobalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('current route = ${Get.currentRoute}');
     UserModel userModel = UserModel();
     try{
       userModel = Get.arguments;
@@ -29,6 +30,7 @@ class GlobalView extends StatelessWidget {
         backgroundColor: Colors.transparent,
         bottomNavigationBar: CurvedNavigationBar(
           color: Colors.white,
+          index: controller.index,
           buttonBackgroundColor: Colors.purple,
           backgroundColor: Colors.white,
           animationCurve: Curves.easeInOut,

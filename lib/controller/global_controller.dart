@@ -20,7 +20,7 @@ class GlobalController extends GetxController {
 
   navbarTrigger(int value){
     if(value==0){
-      //todo update home screen
+
     }
   }
 

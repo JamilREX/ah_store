@@ -1,4 +1,4 @@
-
+import 'package:ah_store/components/cart_card.dart';
 import 'package:ah_store/controller/cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -10,10 +10,20 @@ class CartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
    // Get.lazyPut(()=>CartController());
+
+    print('ccc = ${Get.currentRoute}');
     return GetBuilder<CartController>(
       builder:(controller)=> Scaffold(
         appBar: AppBar(
           centerTitle: true,
+          actions: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(controller.finalPrice.toString()),
+              ],
+            )
+          ],
           title: const Text('Cart'),
           backgroundColor: Colors.purple,
         ),
@@ -27,13 +37,13 @@ class CartView extends StatelessWidget {
                   children: [
                     Obx((){
                       return controller.cartModel.value.orderItems.isNotEmpty?SizedBox(
-                        width: 100,
+                        width: Get.width,
                         child: ListView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: controller.cartModel.value.orderItems.length,
                           itemBuilder: (context , index){
-                            return Text('data');
+                            return CartCard(orderItem: controller.cartModel.value.orderItems[index]);
                           },
                         ),
                       ):SizedBox();
