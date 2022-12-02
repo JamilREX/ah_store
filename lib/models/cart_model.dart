@@ -29,6 +29,7 @@ class CartModel {
 class OrderItem {
   int? quantity =1;
   int? productId;
+
   Products? product;
   OrderItem({this.quantity = 1, this.productId , this.product});
 

@@ -62,7 +62,7 @@ class CartView extends StatelessWidget {
               ),
 
             ),
-            Positioned(
+            controller.cartModel.value.orderItems.isNotEmpty?Positioned(
               bottom: 16,
               child: SizedBox(
                 width: Get.width,
@@ -71,13 +71,14 @@ class CartView extends StatelessWidget {
                   children: [
                     NeumorphicButton(
                       onPressed: (){
+                        controller.buy();
                       },
                       child: Text('buy'),
                     ),
                   ],
                 ),
               )
-            ),
+            ):SizedBox(),
             // SingleChildScrollView(
             //   child: Column(
             //     children: [

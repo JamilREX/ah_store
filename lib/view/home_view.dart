@@ -1,4 +1,5 @@
 import 'package:ah_store/components/category_card.dart';
+import 'package:ah_store/controller/global_controller.dart';
 import 'package:ah_store/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +33,8 @@ class HomeView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
+                Text(Get.find<GlobalController>().userModel.balance.toString()),
 
                    const Text('Category',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
 

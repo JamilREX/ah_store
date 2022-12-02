@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:ah_store/const/consts.dart';
+import 'package:ah_store/helper/request_helper.dart';
 import 'package:ah_store/view/auth_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart' as http;
 
 class SignupController extends GetxController {
   TextEditingController fullNameController = TextEditingController();
@@ -26,12 +26,12 @@ class SignupController extends GetxController {
     } else {
       loading.value = true;
       var response =
-          await http.post(Uri.parse('${KConstants.domain}api/create'), body: {
+          await RequestHelper.post( body: {
         'username': usernameController.text,
         'password': passwordController.text,
         'email': emailController.text,
         'full_name': fullNameController.text,
-      });
+      }, url: '${KConstants.domain}api/create');
 
       if (response.statusCode == 201 || response.statusCode == 200) {
         String token = jsonDecode(response.body)['data']['token'];

@@ -1,9 +1,7 @@
-import 'dart:convert';
 import 'package:ah_store/const/consts.dart';
 import 'package:ah_store/helper/request_helper.dart';
 import 'package:ah_store/models/all_model_req.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 
 class HomeController extends GetxController {
 
@@ -40,11 +38,11 @@ class HomeController extends GetxController {
   getCategories() async {
     homeCategoryModelList.value = [];
     loading.value = true;
-    http.Response response = await RequestHelper.get(
+    var response = await RequestHelper.get(
         url: '${KConstants.domain}api/product/all');
     if (response.statusCode == 200) {
       print(response.body);
-      allModel = AllModelReq.fromJson(jsonDecode(response.body)).allModel!;
+      allModel = AllModelReq.fromJson(response.body).allModel!;
       categoryModelList.value = allModel.fullCategoryList!;
       for (var item in categoryModelList) {
         if (item.parentId == 0) {

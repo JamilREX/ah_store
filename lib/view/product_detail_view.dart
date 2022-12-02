@@ -1,13 +1,11 @@
 import 'dart:io';
-
 import 'package:ah_store/const/consts.dart';
 import 'package:ah_store/controller/global_controller.dart';
 import 'package:ah_store/controller/product_details_controller.dart';
-import 'package:ah_store/view/global_view.dart';
+import 'package:ah_store/helper/request_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import '../controller/home_controller.dart';
@@ -127,14 +125,13 @@ class ProductDetailsView extends StatelessWidget {
                               SizedBox(width: 30),
                               InkWell(
                                   onTap: () async {
-                                    final response = await http.get(Uri.parse(
-                                        KConstants.domain +
-                                            product.photo.toString()));
+                                    final response = await RequestHelper.get(url: KConstants.domain +
+                                        product.photo.toString());
                                     final documentDirectory =
                                     await getTemporaryDirectory();
                                     final file = File(
                                         '${documentDirectory.path}/temp.jpg');
-                                    file.writeAsBytesSync(response.bodyBytes);
+                                    file.writeAsBytesSync(response.bodyBytes as List<int>);
                                     print(file.path);
                                     XFile xfile = XFile(file.path);
                                     print(xfile.path);

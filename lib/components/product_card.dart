@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:ah_store/const/consts.dart';
 import 'package:ah_store/controller/home_controller.dart';
@@ -7,7 +8,11 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
+
+
+
 
 class ProductCard extends StatelessWidget {
   final Products product;
@@ -132,13 +137,18 @@ class ProductCard extends StatelessWidget {
                           SizedBox(width: 12),
                           InkWell(
                               onTap: () async {
-                                final response = await http.get(Uri.parse(
-                                    KConstants.domain +
-                                        product.photo.toString()));
+
+
+
+                                final response = await http.get(Uri.parse(KConstants.domain +
+                                    product.photo.toString()));
+                                print('photo response = ${response.statusCode
+                                }');
                                 final documentDirectory =
                                     await getTemporaryDirectory();
                                 final file =
                                     File('${documentDirectory.path}/temp.jpg');
+                                //var bodyBytes = await response.bodyBytes!.first;
                                 file.writeAsBytesSync(response.bodyBytes);
                                 print(file.path);
                                 XFile xfile = XFile(file.path);
