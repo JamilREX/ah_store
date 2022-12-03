@@ -11,6 +11,8 @@ import 'package:share_plus/share_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 
+import '../controller/favourit_controller.dart';
+
 
 
 
@@ -92,6 +94,7 @@ class ProductCard extends StatelessWidget {
                             onTap: () {
                               Get.find<HomeController>()
                                   .changeFavourite(product.id.toString());
+                             // Get.find<FavouritController>().addToFavourites(product: Products());
                             },
                             child: Obx(() {
                               int favouriteCount = 0;

@@ -30,6 +30,7 @@ class HomeController extends GetxController {
      }
      favLoading.value = false;
      productChanging.value = '0';
+
    }
 
 

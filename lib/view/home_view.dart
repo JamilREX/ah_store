@@ -34,8 +34,7 @@ class HomeView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
-                Text(Get.find<GlobalController>().userModel.balance.toString()),
-
+              Text(Get.find<GlobalController>().userModel.balance.toString()) ,
                    const Text('Category',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
 
                 const SizedBox(height: 50),

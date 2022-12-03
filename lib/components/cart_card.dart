@@ -27,10 +27,6 @@ class _CartCardState extends State<CartCard> {
     quantity = widget.orderItem.quantity!;
     super.initState();
   }
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Neumorphic(

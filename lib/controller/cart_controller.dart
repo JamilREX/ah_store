@@ -8,7 +8,6 @@ import 'package:get_storage/get_storage.dart';
 
 class CartController extends GetxController {
   var cartModel = CartModel(orderItems: []).obs;
-
   double? finalPrice;
 
   calcFinalPrice() {
@@ -45,7 +44,7 @@ class CartController extends GetxController {
       cartModel.value.orderItems.add(newOrderItem);
     } else {
       Get.snackbar('No', 'This product is already in the cart !',
-          snackPosition: SnackPosition.BOTTOM);
+          snackPosition: SnackPosition.TOP);
     }
     GetStorage().write('cartModel', cartModel);
 
