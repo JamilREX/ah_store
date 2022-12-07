@@ -13,7 +13,9 @@ class GlobalView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('current route = ${Get.currentRoute}');
+
+
+
     UserModel userModel = UserModel();
     try{
       userModel = Get.arguments;
@@ -23,7 +25,9 @@ class GlobalView extends StatelessWidget {
     Get.lazyPut(() => GlobalController());
     return GetBuilder<GlobalController>(
       initState: (_){
-        Get.find<GlobalController>().userModel = userModel;
+        print('7878787878');
+        Get.find<GlobalController>().userModel.value = userModel;
+        Get.find<GlobalController>().fullNameController.text = userModel.fullName!;
       },
       builder:(controller)=>Scaffold(
         //extendBody: true,

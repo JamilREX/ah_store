@@ -34,7 +34,7 @@ class SignupController extends GetxController {
       }, url: '${KConstants.domain}api/create');
 
       if (response.statusCode == 201 || response.statusCode == 200) {
-        String token = jsonDecode(response.body)['data']['token'];
+        String token = response.body['data']['token'];
         await GetStorage().write('token', token);
         Get.offAll(const AuthView());
       } else {
@@ -48,7 +48,7 @@ class SignupController extends GetxController {
             style: TextStyle(color: Colors.white),
           ),
           messageText: Text(
-            jsonDecode(response.body).toString(),
+            response.body.toString(),
             style: const TextStyle(color: Colors.white),
           ),
         );

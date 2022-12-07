@@ -35,7 +35,9 @@ class CartView extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+
                     Obx((){
+                      print('jj : ${controller.cartModel.value.orderItems.length}');
                       return controller.cartModel.value.orderItems.isNotEmpty?SizedBox(
                         width: Get.width,
                         child: ListView.builder(

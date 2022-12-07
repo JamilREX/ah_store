@@ -31,14 +31,14 @@ class LoginController extends GetxController {
       );
       if(response.statusCode==201 || response.statusCode==200){
         Get.snackbar('done', 'done');
-        String token = jsonDecode(response.body)['data']['token'];
+        String token = response.body['data']['token'];
         await GetStorage().write('token', token);
 
 
         print(token);
         Get.offAll(const AuthView());
       } else {
-        Get.snackbar('خطأ', jsonDecode(response.body)['msg']);
+        Get.snackbar('خطأ', response.body['msg']);
         print('body = ${response.body}');
       }
       loading.value = false;

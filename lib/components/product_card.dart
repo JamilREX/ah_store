@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:ah_store/const/consts.dart';
 import 'package:ah_store/controller/home_controller.dart';
@@ -8,7 +7,6 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 
 import '../controller/favourit_controller.dart';
