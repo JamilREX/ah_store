@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:ah_store/const/consts.dart';
 import 'package:ah_store/controller/global_controller.dart';
+import 'package:ah_store/helper/request_helper.dart';
 import 'package:ah_store/models/all_model_req.dart';
 import 'package:ah_store/models/cart_model.dart';
 import 'package:get/get.dart';
@@ -77,48 +78,13 @@ class CartController extends GetxController {
   }
 
   buy() async {
-
-    var x = { 'kk' : cartModel.value.orderItems.map((e) => e.toJson()).toList()};
-    print('jjj : $x');
-
-    var token = await GetStorage().read('token');
-    print(jsonEncode({
-      'order_items': [
-        {'product_id': 94, 'quantity': 1}
-      ],
-    }));
-
-    var response = await GetConnect().post(KConstants.domain + 'api/order/add',{'order_items' : [
-      {
-        'product_id' : 94,
-        'quantity' : 2,
-      }
-    ]},headers: {
-      'ZD_TOKEN': '2e4f7961133be1e08fffdb18634a453c',
-      'Authorization': 'Bearer $token'
-    },);
+    var response = await RequestHelper.post( url :KConstants.domain + 'api/order/add',body :cartModel.toJson());
     if(response.statusCode==201){
       Get.find<GlobalController>().updateUserInformation();
       cartModel.value.orderItems = [];
+      calcFinalPrice();
+      update();
     }
-
-
-    // var response = await http.post(
-    //   Uri.parse(KConstants.domain + 'api/order/add'),
-    //   headers: {
-    //     'ZD_TOKEN': '2e4f7961133be1e08fffdb18634a453c',
-    //     'Authorization': 'Bearer $token'
-    //   },
-    //   body: {
-    //     'order_items' : []
-    //   },
-    // );
-
-    // var response = await RequestHelper.post(url: '${KConstants.domain}api/order/add', body: jsonEncode({
-    //   "order_items" : [],
-    // }));
-    print(response.statusCode);
-    print(response.body);
     GetStorage().write('cartModel', cartModel);
   }
 

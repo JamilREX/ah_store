@@ -1,9 +1,11 @@
+import 'dart:io';
+
 import 'package:ah_store/components/category_card.dart';
 import 'package:ah_store/controller/global_controller.dart';
 import 'package:ah_store/controller/home_controller.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 
@@ -33,14 +35,18 @@ class HomeView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // controller.file==null?SizedBox():Image.file(controller.file!),
+                // ElevatedButton(onPressed: (){
+                //   controller.getImage();
+                // }, child: Text('get img')),
 
-                Text(Get.find<GlobalController>().userModel.balance.toString()),
 
+                Text(Get.find<GlobalController>().userModel.value.balance.toString()),
                    const Text('Category',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-
                 const SizedBox(height: 50),
                 controller.homeCategoryModelList.isNotEmpty?GridView.builder(
                   shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: controller.homeCategoryModelList.length,
                   itemBuilder: (context , index){
                     return CategoryCard(fullCategory: controller.homeCategoryModelList[index],fullCategoryIndex:index);
@@ -55,8 +61,6 @@ class HomeView extends StatelessWidget {
 
 
                 ):const SizedBox()
-
-
 
               ],
             ),
