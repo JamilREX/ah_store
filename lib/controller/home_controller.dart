@@ -1,12 +1,7 @@
-import 'dart:io';
-
 import 'package:ah_store/const/consts.dart';
-import 'package:ah_store/helper/image_uploader.dart';
 import 'package:ah_store/helper/request_helper.dart';
 import 'package:ah_store/models/all_model_req.dart';
 import 'package:get/get.dart';
-import 'package:image_cropper/image_cropper.dart';
-import 'package:image_picker/image_picker.dart';
 
 class HomeController extends GetxController {
 

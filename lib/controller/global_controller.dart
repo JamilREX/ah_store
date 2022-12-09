@@ -5,7 +5,6 @@ import 'package:ah_store/view/home_view.dart';
 import 'package:ah_store/view/profile_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import '../const/consts.dart';
 import '../helper/image_uploader.dart';
@@ -29,13 +28,13 @@ class GlobalController extends GetxController {
 
   Future<String>getImage()async{
     var image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    CroppedFile? croppedFile = await ImageCropper().cropImage(
-      sourcePath: image!.path,
-      aspectRatioPresets: [
-        CropAspectRatioPreset.square,
-      ],
-    );
-    file = File(croppedFile!.path);
+    // CroppedFile? croppedFile = await ImageCropper().cropImage(
+    //   sourcePath: image!.path,
+    //   aspectRatioPresets: [
+    //     CropAspectRatioPreset.square,
+    //   ],
+    // );
+    file = File(image!.path);
     var imageUrl = await ImageUploader.uploadAndGetUrl(xFile: XFile(file!.path));
     print(imageUrl);
     finalImageUrl = imageUrl;
