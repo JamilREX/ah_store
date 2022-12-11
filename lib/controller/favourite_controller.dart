@@ -15,9 +15,11 @@ class FavouriteController extends GetxController {
       for(Products product in fullCategory.products!){
         if(product.favoriteCount==1){
           favProducts.value.add(product);
+          update();
         }
       }
     }
+
   }
 
 

@@ -34,7 +34,8 @@ class FavouritView extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount:  controller.modelProduct.value.products!.length,
                     itemBuilder: (context , index){
-                      return FavouritCard(product: controller.modelProduct.value.products![index]);
+                       return
+                        FavouritCard(product: controller.modelProduct.value.products![index]);
                     },
                   ),
               ):SizedBox(),

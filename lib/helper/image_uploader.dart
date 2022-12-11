@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:ah_store/const/consts.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:image_picker/image_picker.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ImageUploader {
   static Future<String> uploadAndGetUrl(

@@ -1,5 +1,4 @@
 import 'package:ah_store/models/all_model_req.dart';
-import 'package:ah_store/models/cart_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
@@ -28,28 +27,28 @@ class _FavouritCardState extends State<FavouritCard> {
       ),
       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       padding: EdgeInsets.all(0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network(
-            KConstants.domain + widget.product!.photo.toString(),
-            height: Get.height * 0.14,
-            width: Get.height * 0.14,
-            fit: BoxFit.fitHeight,
-          ),
-          SizedBox(width: 10),
-          Column(
-            // todo add $ to price
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(widget.product!.productName.toString()),
-              SizedBox(height: 10),
-             // Text(widget.product!.price.toString()),
-            ],
-          ),
-          Icon(Icons.details),
-        ],
-      ),
+      // child: Row(
+      //   crossAxisAlignment: CrossAxisAlignment.start,
+      //   children: [
+      //     Image.network(
+      //       KConstants.domain + widget.product!.photo.toString(),
+      //       height: Get.height * 0.14,
+      //       width: Get.height * 0.14,
+      //       fit: BoxFit.fitHeight,
+      //     ),
+      //     SizedBox(width: 10),
+      //     Column(
+      //       // todo add $ to price
+      //       mainAxisAlignment: MainAxisAlignment.start,
+      //       children: [
+      //         Text(widget.product!.productName.toString()),
+      //         SizedBox(height: 10),
+      //        // Text(widget.product!.price.toString()),
+      //       ],
+      //     ),
+      //     Icon(Icons.details),
+      //   ],
+      // ),
     );
     ;
   }
