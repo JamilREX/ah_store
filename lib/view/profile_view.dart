@@ -93,7 +93,7 @@ class ProfileView extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                      Icon(Icons.whatsapp,size: 30,color: Colors.green,),
+                      Icon(Icons.whatsapp,size: 30,color: Colors.green.shade500,),
                       SizedBox(width: 20,),
                       Icon(Icons.telegram,size: 30,color: Colors.blue,),
                     ],)
