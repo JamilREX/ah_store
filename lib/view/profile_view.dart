@@ -1,12 +1,11 @@
 import 'package:ah_store/const/consts.dart';
 import 'package:ah_store/controller/global_controller.dart';
-import 'package:ah_store/controller/profile_controller.dart';
 import 'package:ah_store/widget/textField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../controller/home_controller.dart';
-import '../models/user_model.dart';
+
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -52,42 +51,76 @@ class ProfileView extends StatelessWidget {
                   ],
                 ),
                 child: Column(
-                  //mainAxisAlignment: MainAxisAlignment.center,
-
+                 // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-
-                    InkWell(
-                      onTap: (){
-                        controller.getImage();
-                      },
-                      child:  controller.file==null?controller.userModel.value.avatar!=null? CircleAvatar(
-                        radius: 50,
-                        foregroundImage: NetworkImage(KConstants.domain + controller.userModel.value.avatar.toString()),
-                      ):CircleAvatar(
-                        radius: 50,
-                        backgroundColor: Colors.purple,
-                        child: Text(controller.userModel.value.fullName![0] ,style: TextStyle(fontSize: 36), ),
-                        // todo replace sizebox to image from gallery
-                      ):CircleAvatar(
-                        radius: 50,
-                        foregroundImage: FileImage(controller.file!),
-                      ),
+                    SizedBox(height: 75),
+                    Container(
+                      width: Get.width*0.5/2,
+                      child: TextFormField(
+                        style: TextStyle(fontSize: 25),
+                          controller: controller.fullNameController, onChanged: (value){
+                          controller.fullNameController.text = value;
+                        },
+                        decoration: InputDecoration(border: InputBorder.none,icon: Icon(Icons.edit) ),
+                        ),
                     ),
-                    SizedBox(height: 50),
-                    MyTextField(textEditingController: controller.fullNameController, onChanged: (value){
-                      controller.fullNameController.text = value;
-                    }, labelText: 'labelText', textHint: 'textHint'),
-                    
-                    
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Email : ",style: TextStyle(fontSize: 25),),
+                        Text(Get.find<GlobalController>().userModel.value.username.toString(),style: TextStyle(fontSize: 25),),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("TypeUser : ",style: TextStyle(fontSize: 25),),
+                        Text(Get.find<GlobalController>().userModel.value.userType.toString(),style: TextStyle(fontSize: 25),),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Your balance : ",style: TextStyle(fontSize: 25),),
+                        Container(child: Text("\$"+Get.find<GlobalController>().userModel.value.balance.toString(),style: TextStyle(fontSize: 25),)),
+                      ],
+                    ),
                     ElevatedButton(onPressed: (){
                       controller.editUserInfo();
-                    }, child: Text('Save'))
-
-
+                    }, child: Text('Save')),
+                    Text("to charge your balance ,conact us "),
+                    SizedBox(height: 10,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                      Icon(Icons.whatsapp,size: 30,color: Colors.green,),
+                      SizedBox(width: 20,),
+                      Icon(Icons.telegram,size: 30,color: Colors.blue,),
+                    ],)
                   ],
                 ),
           )
-          )
+          ),
+          Positioned(
+            top:Get.height*0.1/2,
+              left: Get.width*0.38,
+            child:  InkWell(
+            onTap: (){
+              controller.getImage();
+            },
+            child:  controller.file==null?controller.userModel.value.avatar!=null? CircleAvatar(
+              radius: 50,
+              foregroundImage: NetworkImage(KConstants.domain + controller.userModel.value.avatar.toString()),
+            ):CircleAvatar(
+              radius: 50,
+              backgroundColor: Colors.purple,
+              child: Text(controller.userModel.value.fullName![0] ,style: TextStyle(fontSize: 36), ),
+              // todo replace sizebox to image from gallery
+            ):CircleAvatar(
+              radius: 50,
+              foregroundImage: FileImage(controller.file!),
+            ),
+          ),)
         ],
       ),
      )

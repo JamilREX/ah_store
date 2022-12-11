@@ -4,6 +4,7 @@ import 'package:ah_store/components/category_card.dart';
 import 'package:ah_store/controller/global_controller.dart';
 import 'package:ah_store/controller/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -33,7 +34,7 @@ class HomeView extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // controller.file==null?SizedBox():Image.file(controller.file!),
                 // ElevatedButton(onPressed: (){
@@ -41,9 +42,22 @@ class HomeView extends StatelessWidget {
                 // }, child: Text('get img')),
 
 
-                Text(Get.find<GlobalController>().userModel.value.balance.toString()),
-                   const Text('Category',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-                const SizedBox(height: 50),
+
+                Neumorphic(
+                     margin: const EdgeInsets.only(bottom: 8 , top: 20),
+                     padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
+                     style: NeumorphicStyle(
+                         depth: -4,
+                         intensity: 0.8,
+                         color: Colors.white,
+                         boxShape: NeumorphicBoxShape.roundRect( BorderRadius.circular(20
+                             // topRight: Radius.circular(20),
+                             // bottomRight: Radius.circular(20)
+                         ))
+                     ),
+                     child: const Text('Categories' , style: TextStyle(fontWeight: FontWeight.w600 , fontSize: 17 , color: Colors.black87),),
+                   ),
+                const SizedBox(height: 20),
                 controller.homeCategoryModelList.isNotEmpty?GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),

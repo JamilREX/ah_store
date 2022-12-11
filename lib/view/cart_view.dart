@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 
+import '../controller/global_controller.dart';
+
 class CartView extends StatelessWidget {
   const CartView({Key? key}) : super(key: key);
 
@@ -65,17 +67,27 @@ class CartView extends StatelessWidget {
 
             ),
             controller.cartModel.value.orderItems.isNotEmpty?Positioned(
-              bottom: 16,
+              bottom: 25,
               child: SizedBox(
                 width: Get.width,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    NeumorphicButton(
-                      onPressed: (){
-                        controller.buy();
-                      },
-                      child: Text('buy'),
+                    Container(
+                      width: Get.width*0.5,
+                      child: NeumorphicButton(
+                        style: NeumorphicStyle(color: Colors.purple),
+                        onPressed: (){
+                          var x = double.parse(Get.find<GlobalController>().userModel.value.balance.toString());
+                          var y= double.parse(Get.find<CartController>().finalPrice.toString());
+                          if(x >= y){
+                            controller.buy();
+                            Get.snackbar("Success", "you purchase has been made ,we will contact you shortly !",backgroundColor: Color(0xff00ff00));
+                          }
+                          else{Get.snackbar("NO", "no balance",backgroundColor: Color(0xffff0000));}
+
+                        },
+                            child: Text('buy',textAlign: TextAlign.center,style: TextStyle(color: Colors.white),)),
                     ),
                   ],
                 ),

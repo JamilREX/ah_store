@@ -66,7 +66,7 @@ class ProductCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Flexible(
-                            child: Text('laptop DDR5 Ram 3200 mhz',
+                            child: Text(product.productName.toString(),
                                 style: TextStyle(color: Colors.grey)),
                           ),
                         ],

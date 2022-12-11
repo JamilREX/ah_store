@@ -10,6 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import '../controller/home_controller.dart';
 import '../models/all_model_req.dart';
+import 'package:http/http.dart' as http;
 
 class ProductDetailsView extends StatelessWidget {
   final Products product;
@@ -42,7 +43,7 @@ class ProductDetailsView extends StatelessWidget {
                       children: [
                         //todo prodect description
                         Text(
-                          "Xiaomi Redmi 10C 4G",
+                          product.productName.toString(),
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
@@ -50,9 +51,7 @@ class ProductDetailsView extends StatelessWidget {
                           height: 15,
                         ),
                         Text(
-                            "And Pile Xiaomi Redmi 10C 4G network (graphite gray, "
-                                "4 GB RAM, 64 GB storage, screen with a clear fingerprint"
-                                " location| 50 MP with 5 MP rear camera",
+                            product.description.toString(),
                             textAlign: TextAlign.center),
                         SizedBox(
                           height: 15,
@@ -139,10 +138,30 @@ class ProductDetailsView extends StatelessWidget {
                                         text:
                                         '${product.productName}\nprice:${product.price}\nhttps://www.google.com');
                                   },
-                                  child: Icon(
+                                  child: InkWell(
+                                    onTap: () async {
+                                      final response = await http.get(Uri.parse(KConstants.domain +
+                                          product.photo.toString()));
+                                      print('photo response = ${response.statusCode
+                                      }');
+                                      final documentDirectory =
+                                          await getTemporaryDirectory();
+                                      final file =
+                                      File('${documentDirectory.path}/temp.jpg');
+                                      //var bodyBytes = await response.bodyBytes!.first;
+                                      file.writeAsBytesSync(response.bodyBytes);
+                                      print(file.path);
+                                      XFile xfile = XFile(file.path);
+                                      print(xfile.path);
+                                      Share.shareXFiles([xfile],
+                                          text:
+                                          '${product.productName}\nprice:${product.price}\nhttps://www.google.com');
+                                    },
+                                    child:Icon (
                                     Icons.share_outlined,
                                     color: Colors.blueGrey,
                                     size: 32,
+                                    )
                                   )),
                             ],
                           ),
