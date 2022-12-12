@@ -1,6 +1,5 @@
 import 'package:ah_store/const/consts.dart';
 import 'package:ah_store/controller/global_controller.dart';
-import 'package:ah_store/widget/textField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -12,6 +11,8 @@ class ProfileView extends StatelessWidget {
 
 
   // hello
+  /////////////////////////////////////////////////
+  //..
   const ProfileView({Key? key}) : super(key: key);
 
   @override
