@@ -106,6 +106,8 @@ class ProfileView extends StatelessWidget {
               left: Get.width*0.38,
             child:  InkWell(
             onTap: (){
+              //
+              print('');
               controller.getImage();
             },
             child:  controller.file==null?controller.userModel.value.avatar!=null? CircleAvatar(
