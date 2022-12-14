@@ -10,6 +10,10 @@ class FavouriteController extends GetxController {
   RxList<Products> favProducts = <Products>[].obs ;
 
   getFavProductsLocally(){
+
+
+
+    // hi
     favProducts.value = [];
     for(FullCategory fullCategory in Get.find<HomeController>().allModel.fullCategoryList!){
       for(Products product in fullCategory.products!){
