@@ -8,6 +8,24 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() async{
+
+  //todo make settings model from  resposne https://api-card-store.technorex.net/api/setting
+  // todo in Global controller getSettings() and save it
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   await GetStorage.init();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,

@@ -3,8 +3,6 @@ import 'package:ah_store/view/product_detail_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-
 import '../const/consts.dart';
 
 
@@ -43,7 +41,7 @@ class FavouriteView extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    width: Get.width,
+                    //width: Get.width,
                     margin: EdgeInsets.all(6),
                     child: Row(
                       children: [
@@ -76,8 +74,9 @@ class FavouriteView extends StatelessWidget {
                             ],
                           ),
                         ),
+                        Expanded(child: SizedBox()),
                         Container(
-                          width: Get.width * 0.2,
+                          //width: Get.width * 0.2,
                          child: Row(
                            mainAxisAlignment: MainAxisAlignment.end,
                            children: [

@@ -1,8 +1,10 @@
 import 'package:ah_store/const/consts.dart';
 import 'package:ah_store/controller/global_controller.dart';
+import 'package:ah_store/widget/textField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../controller/home_controller.dart';
 
 
@@ -63,13 +65,15 @@ class ProfileView extends StatelessWidget {
                     SizedBox(height: 75),
                     Container(
                       width: Get.width*0.5/2,
-                      child: TextFormField(
-                        style: TextStyle(fontSize: 25),
-                          controller: controller.fullNameController, onChanged: (value){
-                          controller.fullNameController.text = value;
-                        },
-                        decoration: InputDecoration(border: InputBorder.none,icon: Icon(Icons.edit) ),
-                        ),
+                      child: MyTextField(textEditingController: controller.fullNameController,
+                        onChanged: (value){
+                        controller.fullNameController.text = value;
+                        controller.update();
+                        }, labelText: 'full name',
+                        textHint: '',
+
+
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -97,12 +101,22 @@ class ProfileView extends StatelessWidget {
                     }, child: Text('Save')),
                     Text("to charge your balance ,conact us "),
                     SizedBox(height: 10,),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                      Icon(Icons.whatsapp,size: 30,color: Colors.green,),
+                      InkWell(child: Icon(Icons.whatsapp,size: 30,color: Colors.green,) , onTap: ()async{
+
+                        await launchUrl(Uri.parse(KConstants.whatsAppUrl) , mode: LaunchMode.externalNonBrowserApplication);
+
+
+
+                      },),
+
                       SizedBox(width: 20,),
-                      Icon(Icons.telegram,size: 30,color: Colors.blue,),
+                      InkWell(child: Icon(Icons.telegram,size: 30,color: Colors.blue,),onTap: ()async{
+                        await launchUrl(Uri.parse(KConstants.telegramUrl) , mode: LaunchMode.externalNonBrowserApplication);
+                      }),
                     ],)
                   ],
                 ),

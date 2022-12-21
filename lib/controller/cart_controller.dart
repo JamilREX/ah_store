@@ -1,14 +1,25 @@
-import 'dart:convert';
+
 import 'dart:ui';
 import 'package:ah_store/const/consts.dart';
 import 'package:ah_store/controller/global_controller.dart';
 import 'package:ah_store/helper/request_helper.dart';
 import 'package:ah_store/models/all_model_req.dart';
 import 'package:ah_store/models/cart_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class CartController extends GetxController {
+
+
+
+  TextEditingController fullNameController = TextEditingController();
+  TextEditingController locationController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
+
+
+
+
   var cartModel = CartModel(orderItems: []).obs;
   double? finalPrice;
   calcFinalPrice()async {
@@ -77,15 +88,48 @@ class CartController extends GetxController {
   }
 
   buy() async {
-    var response = await RequestHelper.post( url :KConstants.domain + 'api/order/add',body :cartModel.toJson());
-    if(response.statusCode==201){
-      //Get.find<GlobalController>().updateUserInformation();
-      cartModel.value.orderItems = [];
-      calcFinalPrice();
-      update();
+
+
+    if(fullNameController.text=='' || locationController.text == '' || phoneNumberController.text == ''){
+      //todo show snackbar : fill all
+      print('errrrrrrrrrrrrrrrrror');
+    }else{
+      for(var item in cartModel.value.orderItems){
+        item.dataa = {};
+        item.dataa!['Full name'] = fullNameController.text;
+        item.dataa!['Location'] = locationController.text;
+        item.dataa!['Phone Number'] = phoneNumberController.text;
+      }
+      var response = await RequestHelper.post( url :KConstants.domain + 'api/order/add',body :cartModel.toJson());
+
+      if(response.statusCode==201){
+
+        if(Get.isDialogOpen==true){
+          Get.back();
+        }
+
+
+        //Get.find<GlobalController>().updateUserInformation();
+        cartModel.value.orderItems = [];
+        calcFinalPrice();
+        Get.find<GlobalController>().updateUserInformation();
+        update();
+      }else{
+        //todo edit snackbar color
+        print(response.statusCode);
+        print(response.body);
+        Get.snackbar(response.body['status'], response.body['msg']);
+      }
+      GetStorage().write('cartModel', cartModel);
+      //Get.snackbar("Success", "you purchase has been made ,we will contact you shortly !",backgroundColor: Color(0xff00ff00));
     }
-    GetStorage().write('cartModel', cartModel);
-   //Get.snackbar("Success", "you purchase has been made ,we will contact you shortly !",backgroundColor: Color(0xff00ff00));
+
+
+
+
+
+
+
   }
 
   @override

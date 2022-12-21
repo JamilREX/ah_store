@@ -15,6 +15,10 @@ class GlobalController extends GetxController {
 
 
   var userModel = UserModel().obs;
+ 
+
+
+
   int index = 0;
 
 

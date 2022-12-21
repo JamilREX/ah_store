@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'all_model_req.dart';
 
 class CartModel {
@@ -29,14 +31,15 @@ class CartModel {
 class OrderItem {
   int? quantity =1;
   int? productId;
-
   Products? product;
-  OrderItem({this.quantity = 1, this.productId , this.product});
+  Map<String , dynamic>? dataa;
+  OrderItem({this.quantity = 1, this.productId , this.product , this.dataa});
 
   OrderItem.fromJson(Map<String, dynamic> json){
     quantity = json['quantity'];
     productId = json['product_id'];
     product = Products.fromJson(json['product']);
+    dataa = jsonDecode(json['data']);
   }
 
   Map<String, dynamic> toJson() {
@@ -44,6 +47,7 @@ class OrderItem {
     data['quantity'] = quantity;
     data['product_id'] = productId;
     data['product'] = product!.toJson();
+    data['data'] = jsonEncode(dataa);
     return data;
   }
 }

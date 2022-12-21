@@ -107,7 +107,7 @@ class _CartCardState extends State<CartCard> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                width: Get.width,
+                //width: Get.width,
                 margin: EdgeInsets.all(6),
                 child: Row(
                   children: [
@@ -123,7 +123,7 @@ class _CartCardState extends State<CartCard> {
                       width: 7,
                     ),
                     Container(
-                      width: Get.width * 0.4,
+                       width: Get.width * 0.35,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,8 +142,9 @@ class _CartCardState extends State<CartCard> {
                         ],
                       ),
                     ),
+                    Expanded(child: SizedBox()),
                     Container(
-                      width: Get.width * 0.3,
+                      //width: Get.width * 0.3,
                       child: Row(
                         children: [
                           IconButton(
@@ -165,7 +166,7 @@ class _CartCardState extends State<CartCard> {
                                       shape: BoxShape.circle,
                                       border: Border.all(
                                           color: Colors.black, width: 1)),
-                                  child: Icon(Icons.remove))),
+                                  child: const Icon(Icons.remove))),
                           Text(quantity.toString()),
                           IconButton(
                               onPressed: () {
