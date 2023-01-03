@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../controller/home_controller.dart';
+import 'add_transfer_view.dart';
 
 
 class ProfileView extends StatelessWidget {
@@ -96,9 +97,19 @@ class ProfileView extends StatelessWidget {
                         Container(child: Text("\$"+Get.find<GlobalController>().userModel.value.balance.toString(),style: TextStyle(fontSize: 25),)),
                       ],
                     ),
-                    ElevatedButton(onPressed: (){
-                      controller.editUserInfo();
-                    }, child: Text('Save')),
+                    Row(
+                      children: [
+                        ElevatedButton(onPressed: (){
+                          controller.editUserInfo();
+                        }, child: Text('Save')),
+                        SizedBox(width: 10),
+
+                        ElevatedButton(onPressed: (){
+                          Get.to(AddTransferView());
+                        }, child: Text('Add transfer'))
+
+                      ],
+                    ),
                     Text("to charge your balance ,conact us "),
                     SizedBox(height: 10,),
 

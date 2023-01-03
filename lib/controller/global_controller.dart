@@ -104,8 +104,9 @@ class GlobalController extends GetxController {
   }
 
   navbarTrigger(int value){
-    if(value==0){
-
+    if(value==0 || value==3){
+      print('kkkkkkkkkkkkkkkkkkkkkkkkkk');
+      updateUserInformation();
     }
   }
 

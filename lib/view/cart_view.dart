@@ -10,9 +10,7 @@ class CartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   // Get.lazyPut(()=>CartController());
 
-    print('ccc = ${Get.currentRoute}');
     return GetBuilder<CartController>(
       builder:(controller)=> Scaffold(
         appBar: AppBar(
