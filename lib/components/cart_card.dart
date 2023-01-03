@@ -42,7 +42,7 @@ class _CartCardState extends State<CartCard> {
         //     //     Image.network(KConstants.domain + widget.orderItem.product!.photo.toString() , height: Get.height*0.14 , width: Get.height*0.14,fit: BoxFit.fitHeight,),
         //     //     SizedBox(width: 10),
         //     //     Column(
-        //     //       // todo add $ to price
+        //     //       //
         //     //       mainAxisAlignment: MainAxisAlignment.start,
         //     //       children: [
         //     //         Text(widget.orderItem.product!.productName.toString()),

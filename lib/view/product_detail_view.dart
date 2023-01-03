@@ -41,7 +41,6 @@ class ProductDetailsView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        //todo prodect description
                         Text(
                           product.productName.toString(),
                           style: TextStyle(

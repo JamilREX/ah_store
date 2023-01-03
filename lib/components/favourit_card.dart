@@ -38,7 +38,7 @@ class _FavouritCardState extends State<FavouritCard> {
       //     ),
       //     SizedBox(width: 10),
       //     Column(
-      //       // todo add $ to price
+      //       //
       //       mainAxisAlignment: MainAxisAlignment.start,
       //       children: [
       //         Text(widget.product!.productName.toString()),

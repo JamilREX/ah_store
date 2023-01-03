@@ -7,6 +7,7 @@ import 'package:ah_store/controller/home_controller.dart';
 import 'package:ah_store/helper/request_helper.dart';
 import 'package:ah_store/models/all_model_req.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AddTransferController extends GetxController {
@@ -27,7 +28,7 @@ class AddTransferController extends GetxController {
 
   addTransfer()async{
     if(amountController.text=='' || fullNameController.text=='' || locationController.text =='' || phoneNumberController.text == ''){
-      //todo add error snack bar
+      Get.snackbar('erorr', 'fill in all empty fields');
     }else{
       var response = await RequestHelper.post(url: '${KConstants.domain}api/transfer/order/add', body: {
         'amount' : amountController.text,
@@ -36,8 +37,7 @@ class AddTransferController extends GetxController {
       });
       if(response.statusCode==201){
         Get.back();
-        //todo need to edit
-        Get.snackbar('done', 'done');
+        Get.snackbar('done', response.body['msg']);
       }else{
         Get.snackbar('error', response.body['msg']);
       }

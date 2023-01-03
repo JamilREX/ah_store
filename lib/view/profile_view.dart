@@ -11,13 +11,6 @@ import 'add_transfer_view.dart';
 
 class ProfileView extends StatelessWidget {
 
-
-
-  // hello
-  /////////////////////////////////////////////////
-  //..
-  // jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
-  // hh
   const ProfileView({Key? key}) : super(key: key);
 
   @override
@@ -64,69 +57,70 @@ class ProfileView extends StatelessWidget {
                  // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SizedBox(height: 75),
-                    Container(
-                      width: Get.width*0.5/2,
-                      child: MyTextField(textEditingController: controller.fullNameController,
-                        onChanged: (value){
-                        controller.fullNameController.text = value;
-                        controller.update();
-                        }, labelText: 'full name',
-                        textHint: '',
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: Get.width*0.7/2,
+                          child: MyTextField(textEditingController: controller.fullNameController,
+                            onChanged: (value){
+                            controller.fullNameController.text = value;
+                            controller.update();
+                            }, labelText: 'full name',
+                            textHint: '',
 
 
-                      ),
+                          ),
+                        ),
+                        SizedBox(width: 10,),
+                        // ElevatedButton(onPressed: (){
+                        //   controller.editUserInfo();
+                        // }, child: Text('Save')),
+                        InkWell(
+                          onTap: (){ controller.editUserInfo();},
+                            child: Icon(Icons.done,size: 40,color: Colors.black,))
+                      ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Email : ",style: TextStyle(fontSize: 25),),
-                        Text(Get.find<GlobalController>().userModel.value.username.toString(),style: TextStyle(fontSize: 25),),
+                        Text("Email : ",style: TextStyle(fontSize: 20),),
+                        Text(Get.find<GlobalController>().userModel.value.username.toString(),style: TextStyle(fontSize: 20),),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("TypeUser : ",style: TextStyle(fontSize: 25),),
-                        Text(Get.find<GlobalController>().userModel.value.userType.toString(),style: TextStyle(fontSize: 25),),
+                        Text("TypeUser : ",style: TextStyle(fontSize: 20),),
+                        Text(Get.find<GlobalController>().userModel.value.userType.toString(),style: TextStyle(fontSize: 20),),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Your balance : ",style: TextStyle(fontSize: 25),),
-                        Container(child: Text("\$"+Get.find<GlobalController>().userModel.value.balance.toString(),style: TextStyle(fontSize: 25),)),
+                        Text("Your balance : ",style: TextStyle(fontSize: 20),),
+                        Text("\$"+Get.find<GlobalController>().userModel.value.balance.toString(),style: TextStyle(fontSize: 20),),
                       ],
                     ),
-                    Row(
-                      children: [
-                        ElevatedButton(onPressed: (){
-                          controller.editUserInfo();
-                        }, child: Text('Save')),
-                        SizedBox(width: 10),
+                    Text("to charge your balance "),
 
-                        ElevatedButton(onPressed: (){
-                          Get.to(AddTransferView());
-                        }, child: Text('Add transfer'))
-
-                      ],
-                    ),
-                    Text("to charge your balance ,conact us "),
                     SizedBox(height: 10,),
+                    ElevatedButton(onPressed: (){
+                      Get.to(AddTransferView());
+                    }, child: Text('Add transfer')),
+                    SizedBox(height: 10,),
+                    Text("--- Or ---"),
 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                       InkWell(child: Icon(Icons.whatsapp,size: 30,color: Colors.green,) , onTap: ()async{
-
                         await launchUrl(Uri.parse(KConstants.whatsAppUrl) , mode: LaunchMode.externalNonBrowserApplication);
-
-
-
                       },),
 
                       SizedBox(width: 20,),
                       InkWell(child: Icon(Icons.telegram,size: 30,color: Colors.blue,),onTap: ()async{
-                        await launchUrl(Uri.parse(KConstants.telegramUrl) , mode: LaunchMode.externalNonBrowserApplication);
+                        // await launchUrl(Uri.parse(KConstants.telegramUrl) , mode: LaunchMode.externalNonBrowserApplication);
                       }),
                     ],)
                   ],

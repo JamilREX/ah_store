@@ -53,7 +53,7 @@ class CartController extends GetxController {
       OrderItem newOrderItem =
           OrderItem(quantity: 1, productId: product.id, product: product);
       cartModel.value.orderItems.add(newOrderItem);
-      Get.snackbar("Success", "Added to the cart",backgroundColor: Color(0xff00ff00),colorText: Color(0xffffffff),);
+      Get.snackbar("Success", "Added to the cart",backgroundColor: Color(0xff285430),colorText: Color(0xffffffff),);
     } else {
       Get.snackbar('No', 'This product is already in the cart !' ,backgroundColor: Color(0xffff0000),colorText: Color(0xffffffff),
           snackPosition: SnackPosition.TOP);
@@ -91,7 +91,8 @@ class CartController extends GetxController {
 
 
     if(fullNameController.text=='' || locationController.text == '' || phoneNumberController.text == ''){
-      //todo show snackbar : fill all
+      //
+      Get.snackbar("Erorr", "fill all empty fields",backgroundColor: Color(0xffff0000),colorText: Color(0xffffffff),);
       print('errrrrrrrrrrrrrrrrror');
     }else{
       for(var item in cartModel.value.orderItems){
@@ -103,30 +104,25 @@ class CartController extends GetxController {
       var response = await RequestHelper.post( url :KConstants.domain + 'api/order/add',body :cartModel.toJson());
 
       if(response.statusCode==201){
-
+        
         if(Get.isDialogOpen==true){
           Get.back();
         }
-
 
         //Get.find<GlobalController>().updateUserInformation();
         cartModel.value.orderItems = [];
         calcFinalPrice();
         Get.find<GlobalController>().updateUserInformation();
         update();
+        Get.snackbar("Success",response.body['msg'],backgroundColor: Color(0xff285430),colorText: Color(0xffffffff), );
       }else{
-        //todo edit snackbar color
         print(response.statusCode);
         print(response.body);
-        Get.snackbar(response.body['status'], response.body['msg']);
+        Get.snackbar(response.body['status'], response.body['msg'],backgroundColor: Color(0xffff0000),colorText: Color(0xffffffff),);
       }
       GetStorage().write('cartModel', cartModel);
       //Get.snackbar("Success", "you purchase has been made ,we will contact you shortly !",backgroundColor: Color(0xff00ff00));
     }
-
-
-
-
 
 
 

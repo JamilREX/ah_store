@@ -8,11 +8,6 @@ import '../widget/textField.dart';
 
 class Signup extends StatelessWidget {
 
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
     Get.put(SignupController());
