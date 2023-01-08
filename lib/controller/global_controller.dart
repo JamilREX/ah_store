@@ -1,7 +1,9 @@
 import 'dart:io';
+import 'package:ah_store/controller/order_log_controller.dart';
 import 'package:ah_store/helper/request_helper.dart';
 import 'package:ah_store/view/cart_view.dart';
 import 'package:ah_store/view/home_view.dart';
+import 'package:ah_store/view/order_log_view.dart';
 import 'package:ah_store/view/profile_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -108,11 +110,15 @@ class GlobalController extends GetxController {
       print('kkkkkkkkkkkkkkkkkkkkkkkkkk');
       updateUserInformation();
     }
+    if(value==2){
+      Get.find<OrderLogController>().getOrdersList();
+    }
   }
 
   List<Widget> screens = [
     const HomeView(),
     const CartView(),
+    const OrderLogView(),
     const FavouriteView(),
     const ProfileView(),
   ];

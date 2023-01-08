@@ -11,6 +11,9 @@ class CartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    Get.put(CartController());
+
+
     return GetBuilder<CartController>(
       builder:(controller)=> Scaffold(
         appBar: AppBar(
