@@ -1,5 +1,6 @@
 import 'package:ah_store/const/consts.dart';
 import 'package:ah_store/controller/cart_controller.dart';
+import 'package:ah_store/controller/global_controller.dart';
 import 'package:ah_store/models/cart_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -17,17 +18,30 @@ class CartCard extends StatefulWidget {
 class _CartCardState extends State<CartCard> {
   double? totalPrice;
   int? quantity;
+  String? price;
 
   @override
   void initState() {
-    totalPrice = widget.orderItem.quantity!.toDouble() *
-        double.parse(widget.orderItem.product!.price!);
-    quantity = widget.orderItem.quantity!;
+
+     price = Get.find<GlobalController>().userModel.value.userType.toString()=='vip'?widget.orderItem.product!.vipPrice.toString():widget.orderItem.product!.price.toString();
+
+    print(Get.find<GlobalController>().userModel.value.userType);
+    if(Get.find<GlobalController>().userModel.value.userType.toString()=='vip'){
+      totalPrice = widget.orderItem.quantity!.toDouble() *
+          double.parse(widget.orderItem.product!.vipPrice!);
+      quantity = widget.orderItem.quantity!;
+    }else{
+      totalPrice = widget.orderItem.quantity!.toDouble() *
+          double.parse(widget.orderItem.product!.price!);
+      quantity = widget.orderItem.quantity!;
+    }
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+
+
     return // Neumorphic(
         //     style: NeumorphicStyle(
         //       color: Colors.white,
@@ -134,7 +148,7 @@ class _CartCardState extends State<CartCard> {
                             height: 5,
                           ),
                           Text(
-                            "\$" + widget.orderItem.product!.price.toString(),
+                            "\$" + price.toString(),
                             style: TextStyle(
                                 color: Colors.green,
                                 fontWeight: FontWeight.bold),
@@ -157,7 +171,7 @@ class _CartCardState extends State<CartCard> {
                                     totalPrice = widget.orderItem.quantity!
                                             .toDouble() *
                                         double.parse(
-                                            widget.orderItem.product!.price!);
+                                            price.toString());
                                   }
                                 });
                               },
@@ -177,7 +191,7 @@ class _CartCardState extends State<CartCard> {
                                   totalPrice =
                                       widget.orderItem.quantity!.toDouble() *
                                           double.parse(
-                                              widget.orderItem.product!.price!);
+                                              price.toString());
                                 });
                               },
                               icon: Container(

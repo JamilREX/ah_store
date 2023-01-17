@@ -120,7 +120,7 @@ class ProfileView extends StatelessWidget {
 
                       SizedBox(width: 20,),
                       InkWell(child: Icon(Icons.telegram,size: 30,color: Colors.blue,),onTap: ()async{
-                        // await launchUrl(Uri.parse(KConstants.telegramUrl) , mode: LaunchMode.externalNonBrowserApplication);
+                        await launchUrl(Uri.parse(KConstants.telegramUrl) , mode: LaunchMode.externalNonBrowserApplication);
                       }),
                     ],)
                   ],

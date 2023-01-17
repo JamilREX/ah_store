@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:ah_store/const/consts.dart';
+import 'package:ah_store/controller/global_controller.dart';
 import 'package:ah_store/controller/home_controller.dart';
 import 'package:ah_store/models/all_model_req.dart';
 import 'package:ah_store/view/product_detail_view.dart';
@@ -23,6 +24,13 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+    String price = Get.find<GlobalController>().userModel.value.userType.toString()=='vip'?product.vipPrice.toString():product.price.toString();
+
+
+
+
     return InkWell(
       onTap: (){
         Get.to(ProductDetailsView(product: product,));
@@ -69,7 +77,7 @@ class ProductCard extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      '\$ ${product.price.toString()}',
+                      price,
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
                           color: Colors.grey.shade800),
@@ -151,7 +159,7 @@ class ProductCard extends StatelessWidget {
                                 print(xfile.path);
                                 Share.shareXFiles([xfile],
                                     text:
-                                        '${product.productName}\nprice:${product.price}\nhttps://www.google.com');
+                                        '${product.productName}\nprice:$price\nhttps://www.google.com');
                               },
                               child: Icon(
                                 Icons.share_outlined,

@@ -18,6 +18,23 @@ class HomeController extends GetxController {
   var homeCategoryModelList = [].obs ;
   var productChanging = '0'.obs;
 
+  List<Products> topProducts = [];
+
+
+  fetchTopProducts(){
+    List<Products>  temp = [];
+    for (var cat in allModel.fullCategoryList!){
+      for(var prod in cat.products!){
+        temp.add(prod);
+      }
+    }
+    temp.sort((a,b)=>a.id!.compareTo(b.id!));
+    var finalList = temp.sublist(temp.length-3,temp.length);
+    topProducts = finalList;
+  }
+
+
+
 
   // post /api/favourite/add
   // requires fields in body : product_id:44
@@ -55,6 +72,7 @@ class HomeController extends GetxController {
         }
       }
     }
+    fetchTopProducts();
     loading.value = false;
     update();
   }

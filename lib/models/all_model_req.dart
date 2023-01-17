@@ -118,6 +118,7 @@ class Products {
   String? productName;
   String? description;
   String? price;
+  String? vipPrice;
   String? offerPrice;
   String? type;
   String? photo;
@@ -130,6 +131,7 @@ class Products {
       this.productName,
       this.description,
       this.price,
+        this.vipPrice,
       this.offerPrice,
       this.type,
       this.photo,
@@ -142,6 +144,7 @@ class Products {
     productName = json['product_name'];
     description = json['description'];
     price = json['price'];
+    vipPrice = json['vip_price'];
     offerPrice = json['offer_price'];
     type = json['type'];
     photo = json['photo'];
@@ -161,6 +164,7 @@ class Products {
     data['product_name'] = productName;
     data['description'] = description;
     data['price'] = price;
+    data['vip_price'] = vipPrice;
     data['offer_price'] = offerPrice;
     data['type'] = type;
     data['photo'] = photo;

@@ -5,6 +5,7 @@ import 'package:ah_store/controller/global_controller.dart';
 import 'package:ah_store/helper/request_helper.dart';
 import 'package:ah_store/models/all_model_req.dart';
 import 'package:ah_store/models/cart_model.dart';
+import 'package:ah_store/models/user_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -16,6 +17,8 @@ class CartController extends GetxController {
   TextEditingController fullNameController = TextEditingController();
   TextEditingController locationController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
+  UserModel userModel = UserModel();
+
 
 
 
@@ -23,14 +26,45 @@ class CartController extends GetxController {
   var cartModel = CartModel(orderItems: []).obs;
   double? finalPrice;
   calcFinalPrice()async {
-    double temp = 0;
-    for (var item in cartModel.value.orderItems) {
-      temp += (item.quantity! * double.parse(item.product!.price.toString()));
+
+    String userType = userModel.userType.toString();
+
+    if(userType=='vip'){
+      double temp = 0;
+      for (var item in cartModel.value.orderItems) {
+        temp += (item.quantity! * double.parse(item.product!.vipPrice.toString()));
+      }
+      finalPrice = temp;
+    }else{
+      double temp = 0;
+      for (var item in cartModel.value.orderItems) {
+        temp += (item.quantity! * double.parse(item.product!.price.toString()));
+      }
+      finalPrice = temp;
     }
-    finalPrice = temp;
+
+
+
     update();
 }
   setupCart() async {
+
+
+    var response = await RequestHelper.get(
+      url :'${KConstants.domain}api/me',
+    );
+    if(response.statusCode==200){
+      print(response.body);
+      userModel = UserModelReq.fromJson(response.body).userModel!;
+    }
+
+
+
+
+
+
+
+
     var cartModelFromLocal = await GetStorage().read('cartModel');
     print('***********');
     print(cartModelFromLocal);

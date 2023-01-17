@@ -19,16 +19,21 @@ class ProductDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String price = Get.find<GlobalController>().userModel.value.userType.toString()=='vip'?product.vipPrice.toString():product.price.toString();
+
+    print(Get.find<GlobalController>().userModel.value.userType);
     Get.put(ProductDetailsController());
     return GetBuilder<ProductDetailsController>(
         builder: (controller) => Scaffold(
             appBar: AppBar(
               actions: [
-                IconButton(onPressed: (){
-                  Get.until((route) => Get.currentRoute=='/GlobalView');
-                  Get.find<GlobalController>().changeIndex(1);
-                  Get.find<GlobalController>().navbarTrigger(1);
-                }, icon: Icon(Icons.shopping_cart_outlined))
+                IconButton(
+                    onPressed: () {
+                      Get.until((route) => Get.currentRoute == '/GlobalView');
+                      Get.find<GlobalController>().changeIndex(1);
+                      Get.find<GlobalController>().navbarTrigger(1);
+                    },
+                    icon: Icon(Icons.shopping_cart_outlined))
               ],
               centerTitle: true,
               title: const Text('product details'),
@@ -49,8 +54,7 @@ class ProductDetailsView extends StatelessWidget {
                         SizedBox(
                           height: 15,
                         ),
-                        Text(
-                            product.description.toString(),
+                        Text(product.description.toString(),
                             textAlign: TextAlign.center),
                         SizedBox(
                           height: 15,
@@ -79,8 +83,8 @@ class ProductDetailsView extends StatelessWidget {
                                 child: Obx(() {
                                   int favouriteCount = 0;
                                   for (FullCategory item
-                                  in Get.find<HomeController>()
-                                      .categoryModelList) {
+                                      in Get.find<HomeController>()
+                                          .categoryModelList) {
                                     if (item.id == product.categoryId) {
                                       for (Products x in item.products!) {
                                         if (x.id == product.id) {
@@ -92,76 +96,79 @@ class ProductDetailsView extends StatelessWidget {
                                   print(favouriteCount.toString());
 
                                   return Get.find<HomeController>()
-                                      .favLoading
-                                      .value ==
-                                      true &&
-                                      Get.find<HomeController>()
-                                          .productChanging
-                                          .value ==
-                                          product.id.toString()
+                                                  .favLoading
+                                                  .value ==
+                                              true &&
+                                          Get.find<HomeController>()
+                                                  .productChanging
+                                                  .value ==
+                                              product.id.toString()
                                       ? SizedBox(
-                                    height: 24,
-                                    width: 24,
-                                    child: const CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                      color: Colors.red,
-                                    ),
-                                  )
+                                          height: 24,
+                                          width: 24,
+                                          child:
+                                              const CircularProgressIndicator(
+                                            strokeWidth: 2,
+                                            color: Colors.red,
+                                          ),
+                                        )
                                       : favouriteCount == 0
-                                      ? Icon(
-                                    Icons.favorite_outline,
-                                    color: Colors.blueGrey,
-                                    size: 32,
-                                  )
-                                      : Icon(
-                                    Icons.favorite,
-                                    color: Colors.red,
-                                    size: 32,
-                                  );
+                                          ? Icon(
+                                              Icons.favorite_outline,
+                                              color: Colors.blueGrey,
+                                              size: 32,
+                                            )
+                                          : Icon(
+                                              Icons.favorite,
+                                              color: Colors.red,
+                                              size: 32,
+                                            );
                                 }),
                               ),
                               SizedBox(width: 30),
                               InkWell(
                                   onTap: () async {
-                                    final response = await RequestHelper.get(url: KConstants.domain +
-                                        product.photo.toString());
+                                    final response = await RequestHelper.get(
+                                        url: KConstants.domain +
+                                            product.photo.toString());
                                     final documentDirectory =
-                                    await getTemporaryDirectory();
+                                        await getTemporaryDirectory();
                                     final file = File(
                                         '${documentDirectory.path}/temp.jpg');
-                                    file.writeAsBytesSync(response.bodyBytes as List<int>);
+                                    file.writeAsBytesSync(
+                                        response.bodyBytes as List<int>);
                                     print(file.path);
                                     XFile xfile = XFile(file.path);
                                     print(xfile.path);
                                     Share.shareXFiles([xfile],
-                                        text:
-                                        '${product.productName}\nprice:${product.price}\nhttps://www.google.com');
+                                        text: '${product.productName}\nprice:$price\nhttps://www.google.com');
                                   },
                                   child: InkWell(
-                                    onTap: () async {
-                                      final response = await http.get(Uri.parse(KConstants.domain +
-                                          product.photo.toString()));
-                                      print('photo response = ${response.statusCode
-                                      }');
-                                      final documentDirectory =
-                                          await getTemporaryDirectory();
-                                      final file =
-                                      File('${documentDirectory.path}/temp.jpg');
-                                      //var bodyBytes = await response.bodyBytes!.first;
-                                      file.writeAsBytesSync(response.bodyBytes);
-                                      print(file.path);
-                                      XFile xfile = XFile(file.path);
-                                      print(xfile.path);
-                                      Share.shareXFiles([xfile],
-                                          text:
-                                          '${product.productName}\nprice:${product.price}\nhttps://www.google.com');
-                                    },
-                                    child:Icon (
-                                    Icons.share_outlined,
-                                    color: Colors.blueGrey,
-                                    size: 32,
-                                    )
-                                  )),
+                                      onTap: () async {
+                                        final response = await http.get(
+                                            Uri.parse(KConstants.domain +
+                                                product.photo.toString()));
+                                        print(
+                                            'photo response = ${response.statusCode}');
+                                        final documentDirectory =
+                                            await getTemporaryDirectory();
+                                        final file = File(
+                                            '${documentDirectory.path}/temp.jpg');
+                                        //var bodyBytes = await response.bodyBytes!.first;
+                                        file.writeAsBytesSync(
+                                            response.bodyBytes);
+                                        print(file.path);
+                                        XFile xfile = XFile(file.path);
+                                        print(xfile.path);
+                                        Share.shareXFiles([xfile],
+                                            text:
+                                                '${product.productName}\nprice:$price\nhttps://www.google.com');
+                                      },
+                                      child: Icon(
+                                        Icons.share_outlined,
+                                        color: Colors.blueGrey,
+                                        size: 32,
+                                      ))),
                             ],
                           ),
                         ),
@@ -181,7 +188,7 @@ class ProductDetailsView extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
-                              "\$" + product.price.toString(),
+                             price,
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
@@ -209,8 +216,13 @@ class ProductDetailsView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Text("The product is shipped from outside the Syrian Arab Republic",style: TextStyle(color: Colors.grey),),
-                        SizedBox(height: 20,),
+                        Text(
+                          "The product is shipped from outside the Syrian Arab Republic",
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
                         NeumorphicButton(
                             onPressed: () {
                               controller.addProductToCartView(product);
@@ -218,11 +230,15 @@ class ProductDetailsView extends StatelessWidget {
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text('Add to cart',),
+                                  Text(
+                                    'Add to cart',
+                                  ),
                                   SizedBox(width: 30),
                                   // Icon(Icons.shopping_cart_outlined)
                                 ])),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         // NeumorphicButton(
                         //     style: NeumorphicStyle(color: Colors.purple),
                         //     onPressed: () {
