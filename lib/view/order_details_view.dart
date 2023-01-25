@@ -1,8 +1,12 @@
 
 
+import 'package:ah_store/components/order_log_tile.dart';
 import 'package:ah_store/controller/order_details_controller.dart';
+import 'package:ah_store/models/all_model_req.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../models/order_log_model.dart';
 
 class OrderDetailsView extends StatelessWidget {
   String id;
@@ -25,14 +29,40 @@ class OrderDetailsView extends StatelessWidget {
           body: SingleChildScrollView(
             child: Obx(() => controller.loading.value==true?Center(child: CircularProgressIndicator()):Column(
               children: [
-                Text(controller.orderDetails.productId.toString()),
-                Column(
-                  children: controller.data.entries.map((e) => Row(children: [
-                    Text(e.key),
-                    const SizedBox(width: 10),
-                    Text(e.value),
-                  ],)).toList()
+
+                Container(
+                  margin: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(10),
+                  color: Colors.blueGrey,
+                  child: Column(
+                    children: [
+                      Row(children: [
+                        Text("order number ID"),
+                       // Text(orderModel.productId.toString())
+                      ],),
+                      Column(
+                        children: controller.data.entries.map((e) => Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                          Text(e.key),
+                          const SizedBox(width: 10),
+                          Text(e.value),
+                        ],)).toList()
+                      )
+                    ],
+                  ),
                 )
+
+
+
+                // Text(controller.orderDetails.productId.toString()),
+                // Column(
+                //   children: controller.data.entries.map((e) => Row(children: [
+                //     Text(e.key),
+                //     const SizedBox(width: 10),
+                //     Text(e.value),
+                //   ],)).toList()
+                // )
               ],
             ))
           ),

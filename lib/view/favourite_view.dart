@@ -80,8 +80,8 @@ class FavouriteView extends StatelessWidget {
                          child: Row(
                            mainAxisAlignment: MainAxisAlignment.end,
                            children: [
-                             Icon(Icons.more_horiz,size: 30,color: Colors.purple,),
-                             SizedBox(width: 5,)
+                             Icon(Icons.info_outline,size: 30,color: Colors.purple,),
+                             SizedBox(width: 10,)
                            ],
                          ),
                         ),

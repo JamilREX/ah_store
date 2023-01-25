@@ -81,36 +81,41 @@ class ProfileView extends StatelessWidget {
                             child: Icon(Icons.done,size: 40,color: Colors.black,))
                       ],
                     ),
+                    SizedBox(height: 10,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Email : ",style: TextStyle(fontSize: 20),),
+                        Text("Email : ",style: TextStyle(fontSize: 17,color: Colors.black38),),
                         Text(Get.find<GlobalController>().userModel.value.username.toString(),style: TextStyle(fontSize: 20),),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("TypeUser : ",style: TextStyle(fontSize: 20),),
+                        Text("TypeUser : ",style: TextStyle(fontSize: 17,color: Colors.black38),),
                         Text(Get.find<GlobalController>().userModel.value.userType.toString(),style: TextStyle(fontSize: 20),),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Your balance : ",style: TextStyle(fontSize: 20),),
+                        Text("Your balance : ",style: TextStyle(fontSize: 17,color: Colors.black38),),
                         Text("\$"+Get.find<GlobalController>().userModel.value.balance.toString(),style: TextStyle(fontSize: 20),),
                       ],
                     ),
                     Text("to charge your balance "),
 
                     SizedBox(height: 10,),
-                    ElevatedButton(onPressed: (){
-                      Get.to(AddTransferView());
-                    }, child: Text('Add transfer')),
+                    InkWell(onTap:() { Get.to(AddTransferView());},
+                        child: Text("click here ",style: TextStyle(color: Colors.green.shade200,fontWeight: FontWeight.bold),)
+
+                    ),
+                    // ElevatedButton(onPressed: (){
+                    //   Get.to(AddTransferView());
+                    // }, child: Text('Add transfer')),
                     SizedBox(height: 10,),
                     Text("--- Or ---"),
-
+                     SizedBox(height: 20,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

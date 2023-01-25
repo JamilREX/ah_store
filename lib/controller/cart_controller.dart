@@ -87,10 +87,10 @@ class CartController extends GetxController {
       OrderItem newOrderItem =
           OrderItem(quantity: 1, productId: product.id, product: product);
       cartModel.value.orderItems.add(newOrderItem);
-      Get.snackbar("Success", "Added to the cart",backgroundColor: Color(0xff285430),colorText: Color(0xffffffff),);
+      Get.snackbar("Success", "Added to the cart",backgroundColor: Color(0xff285430),colorText: Color(0xffffffff),snackPosition:SnackPosition.BOTTOM);
     } else {
       Get.snackbar('No', 'This product is already in the cart !' ,backgroundColor: Color(0xffff0000),colorText: Color(0xffffffff),
-          snackPosition: SnackPosition.TOP);
+          snackPosition: SnackPosition.BOTTOM);
     }
     GetStorage().write('cartModel', cartModel);
 

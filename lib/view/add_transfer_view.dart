@@ -1,6 +1,7 @@
 import 'package:ah_store/controller/add_transfer_controller.dart';
 import 'package:ah_store/models/all_model_req.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 
 import '../widget/textField.dart';
@@ -24,16 +25,50 @@ class AddTransferView extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  color: Colors.grey.shade200,
-                  height: Get.height * 0.24,
+                  //color: Colors.grey.shade200,
+                  width: Get.width*0.5,
+                  child: Neumorphic(
+                    margin: const EdgeInsets.only(bottom: 8, top: 20),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 10),
+                    style: NeumorphicStyle(
+                        depth: -4,
+                        intensity: 0.8,
+                        color: Colors.white,
+                        boxShape: NeumorphicBoxShape.roundRect(
+                            BorderRadius.circular(20
+                              // topRight: Radius.circular(20),
+                              // bottomRight: Radius.circular(20)
+                            ))),
+                    child: const Text(
+                      textAlign: TextAlign.center,
+                      'info',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 17,
+                          color: Colors.black87),
+                    ),
+                  ),
+                ),
+                Container(
+                  //color: Colors.grey.shade200,
+                  height: Get.height * 0.07,
                   child: ListView.builder(
                     itemCount: controller.transfersList.length,
                     itemBuilder: (context, index) {
-                      return Text(
-                          '${controller.transfersList[index].name.toString()}  :  ${controller.transfersList[index].info.toString()}');
+                      return Column(
+                        children: [
+
+                          Container(
+                            child: Text(
+                                '${controller.transfersList[index].name.toString()}  :  ${controller.transfersList[index].info.toString()}'),
+                          ),
+                        ],
+                      );
                     },
                   ),
                 ),
+                Text("choose the payment method and then fill in the feild with the required data",textAlign: TextAlign.center,style: TextStyle(color: Colors.black),),
                 SizedBox(height: 36),
                 DropdownButtonFormField<TransferWay>(
                     decoration: InputDecoration(
@@ -104,10 +139,16 @@ class AddTransferView extends StatelessWidget {
                 ),
 
                 SizedBox(
-                  height: 10,
+                  height: 30,
                 ),
 
-                ElevatedButton(onPressed: (){controller.addTransfer();}, child: Text('add transfer'))
+                ElevatedButton(onPressed: (){controller.addTransfer();}, child: Text('add transfer'), style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.purple),
+                  padding: MaterialStateProperty.all(
+                      const EdgeInsets.symmetric(horizontal: 78, vertical: 10)),
+                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(27))),
+                ),)
 
               ],
             ),

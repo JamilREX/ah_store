@@ -33,9 +33,30 @@ class HomeView extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 50),
+                      Neumorphic(
+                        margin: const EdgeInsets.only(bottom: 8, top: 20),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 10),
+                        style: NeumorphicStyle(
+                            depth: -4,
+                            intensity: 0.8,
+                            color: Colors.white,
+                            boxShape: NeumorphicBoxShape.roundRect(
+                                BorderRadius.circular(20
+                                  // topRight: Radius.circular(20),
+                                  // bottomRight: Radius.circular(20)
+                                ))),
+                        child: const Text(
+                          'Newly added products',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 17,
+                              color: Colors.black87),
+                        ),
+                      ),
+                     // SizedBox(height:10),
                       CarouselSlider(
                         options: CarouselOptions(
                           autoPlay: true,

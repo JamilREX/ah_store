@@ -10,7 +10,7 @@ class BuyDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.symmetric(
-            horizontal: Get.width * 0.1, vertical: Get.height * 0.25),
+            horizontal: Get.width * 0.1, vertical: Get.height * 0.27),
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
@@ -22,6 +22,7 @@ class BuyDialog extends StatelessWidget {
             child: Column(
               children: [
                 //fullname
+                SizedBox(height: 10,),
                 MyTextField(
                   textEditingController: controller.fullNameController,
                   onChanged: (value) {
@@ -50,11 +51,20 @@ class BuyDialog extends StatelessWidget {
                   labelText: 'Phone number',
                   textHint: '+963 xxx-xxx-xxx',
                 ),
+                SizedBox(height: 30,),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ElevatedButton(onPressed: (){
+                    ElevatedButton( style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.purple),
+                      padding: MaterialStateProperty.all(
+                          const EdgeInsets.symmetric(horizontal: 78, vertical: 10)),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(27))),
+                    ),
+                        onPressed: (){
                       controller.buy();
-                    }, child: Text('buy')),
+                    }, child: Text('Send')),
                   ],
                 )
               ],

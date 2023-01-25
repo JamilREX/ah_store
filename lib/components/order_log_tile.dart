@@ -19,27 +19,39 @@ class OrderLogTile extends StatelessWidget {
       onPressed: (){
         Get.to(OrderDetailsView(id: orderModel.id.toString()));
       },
-      child: Row(
-        children: [
-          Text(orderModel.productId.toString()),
-
-
+      child:
           Column(
             children: [
-              Text(orderModel.productName.toString()),
-              Text(orderModel.price.toString()),
-              Text(orderModel.quantity.toString()),
-              Text(orderModel.createdAt.toString()),
-              Container(
-                decoration: BoxDecoration(
-                  color: orderModel.accept==0?Colors.orange:orderModel.accept==1?Colors.green:Colors.red,
-                ),
-                child: Text(orderModel.accept==0?'waiting':orderModel.accept==1?'accepted':'rejected' , style: TextStyle(color: Colors.white),),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CircleAvatar(
+                      radius: 30,
+                      foregroundImage:AssetImage('assets/images/e.png') ),
+                  Text(orderModel.productName.toString()),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: orderModel.accept==0?Colors.orange:orderModel.accept==1?Colors.green:Colors.red,
+                    ),
+                    child: Text(orderModel.accept==0?'waiting':orderModel.accept==1?'accepted':'rejected' , style: TextStyle(color: Colors.white),),
+                  ),
+                ],
               ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(orderModel.createdAt.toString()),
+                ],
+              ),
+             // Text(orderModel.productId.toString()),
+             //
+            //  Text(orderModel.price.toString()),
+             // Text(orderModel.quantity.toString()),
+             //
+
             ],
           )
-        ],
-      ),
     );
   }
 }

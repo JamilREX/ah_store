@@ -22,7 +22,7 @@ class CartView extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(controller.finalPrice.toString()),
+                Text("\$"+controller.finalPrice.toString()),
               ],
             )
           ],
@@ -34,32 +34,33 @@ class CartView extends StatelessWidget {
           children: [
             Positioned(
 
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
 
 
-                    Obx((){
-                      print('jj : ${controller.cartModel.value.orderItems.length}');
-                      return controller.cartModel.value.orderItems.isNotEmpty?SizedBox(
-                        width: Get.width,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          //physics: const NeverScrollableScrollPhysics(),
-                          itemCount: controller.cartModel.value.orderItems.length,
-                          itemBuilder: (context , index){
-                            return CartCard(orderItem: controller.cartModel.value.orderItems[index]);
-                          },
-                        ),
-                      ):SizedBox();
-                    }),
-                  ],
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+
+
+                        Obx((){
+                          return controller.cartModel.value.orderItems.isNotEmpty?SizedBox(
+                            width: Get.width,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              //physics: const NeverScrollableScrollPhysics(),
+                              itemCount: controller.cartModel.value.orderItems.length,
+                              itemBuilder: (context , index){
+                                return CartCard(orderItem: controller.cartModel.value.orderItems[index]);
+                              },
+                            ),
+                          ):SizedBox();
+                        }),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-
-            ),
+            
             controller.cartModel.value.orderItems.isNotEmpty?Positioned(
-              bottom: 0,
+              bottom: 20,
               child: SizedBox(
                  width: Get.width,
                 child: Row(
@@ -67,8 +68,14 @@ class CartView extends StatelessWidget {
                   children: [
                     Container(
                       width: Get.width*0.5,
-                      child: NeumorphicButton(
-                        style: NeumorphicStyle(color: Colors.purple),
+                      child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(Colors.purple),
+                            padding: MaterialStateProperty.all(
+                                const EdgeInsets.symmetric(horizontal: 78, vertical: 10)),
+                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(27))),
+                          ),
                         onPressed: (){
 
 
