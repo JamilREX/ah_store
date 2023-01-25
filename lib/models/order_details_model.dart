@@ -1,9 +1,7 @@
 class OrderDetailsReq {
   String? status;
   OrderDetails? orderDetails;
-
   OrderDetailsReq({this.status, this.orderDetails});
-
   OrderDetailsReq.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     orderDetails = json['data'] != null ? new OrderDetails.fromJson(json['data']) : null;
@@ -20,10 +18,10 @@ class OrderDetailsReq {
 }
 
 class OrderDetails {
-  int? id;
+  int? id; //done
   int? price;
   int? quantity;
-  String? data;
+  String? data; //done
   int? accept;
   String? createdAt;
   String? productName;

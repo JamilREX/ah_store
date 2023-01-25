@@ -23,7 +23,7 @@ class OrderDetailsView extends StatelessWidget {
         builder: (controller)=>Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: const Text('Order Details'),
+            title: Text('Order Details # ${id.toString()}'),
             backgroundColor: Colors.purple,
           ),
           body: SingleChildScrollView(
@@ -33,36 +33,31 @@ class OrderDetailsView extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.all(5),
                   padding: EdgeInsets.all(10),
-                  color: Colors.blueGrey,
+                 // color: Colors.blueGrey,
                   child: Column(
                     children: [
-                      Row(children: [
-                        Text("order number ID"),
-                       // Text(orderModel.productId.toString())
-                      ],),
-                      Column(
-                        children: controller.data.entries.map((e) => Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                          Text(e.key),
-                          const SizedBox(width: 10),
-                          Text(e.value),
-                        ],)).toList()
-                      )
+                      Container(
+                        padding: EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.purple,
+                        ),
+                        child: Column(
+                          children: controller.data.entries.map((e) => Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                            Text(e.key , style: const TextStyle(color: Colors.white),),
+                            const SizedBox(width: 10),
+                            Text(e.value , style: const TextStyle(color: Colors.white),),
+                          ],)).toList()
+                        ),
+                      ),
+                      SizedBox(height: 50),
+                      Text(controller.orderDetails.price.toString()),
+                      Text(controller.orderDetails.createdAt.toString()),
                     ],
                   ),
                 )
-
-
-
-                // Text(controller.orderDetails.productId.toString()),
-                // Column(
-                //   children: controller.data.entries.map((e) => Row(children: [
-                //     Text(e.key),
-                //     const SizedBox(width: 10),
-                //     Text(e.value),
-                //   ],)).toList()
-                // )
               ],
             ))
           ),

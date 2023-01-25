@@ -49,7 +49,7 @@ class GlobalView extends StatelessWidget {
             Icon(Icons.production_quantity_limits, color: controller.index==1?Colors.white:Colors.black),
             //todo icon need to edit
             Icon(Icons.payment, color: controller.index==2?Colors.white:Colors.black),
-            Icon(Icons.ac_unit, color: controller.index==3?Colors.white:Colors.black),
+            Icon(Icons.favorite, color: controller.index==3?Colors.white:Colors.black),
             Icon(Icons.person_pin, color: controller.index==4?Colors.white:Colors.black),
           ],
         ),

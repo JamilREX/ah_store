@@ -27,13 +27,15 @@ class OrderLogTile extends StatelessWidget {
                 children: [
                   CircleAvatar(
                       radius: 30,
-                      foregroundImage:AssetImage('assets/images/e.png') ),
+                      foregroundImage:AssetImage('assets/images/pp.png') ),
                   Text(orderModel.productName.toString()),
                   Container(
+                    padding: EdgeInsets.symmetric(horizontal: 12 , vertical: 2.5),
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
                       color: orderModel.accept==0?Colors.orange:orderModel.accept==1?Colors.green:Colors.red,
                     ),
-                    child: Text(orderModel.accept==0?'waiting':orderModel.accept==1?'accepted':'rejected' , style: TextStyle(color: Colors.white),),
+                    child: Text(orderModel.accept==0?'waiting':orderModel.accept==1?'accepted':'rejected' , style: TextStyle(color: Colors.white , fontSize: 12),),
                   ),
                 ],
               ),
@@ -41,7 +43,7 @@ class OrderLogTile extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(orderModel.createdAt.toString()),
+                  Text(orderModel.createdAt.toString() , style: TextStyle(color: Colors.grey.shade600 , fontSize: 11),),
                 ],
               ),
              // Text(orderModel.productId.toString()),

@@ -21,6 +21,12 @@ class ProfileView extends StatelessWidget {
       builder: (controller) =>
      Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(onPressed: (){
+            controller.signout();
+          }, icon: Icon(Icons.output_rounded)),
+
+        ],
         centerTitle: true,
         title: const Text('Profile'),
         backgroundColor: Colors.purple,
@@ -77,7 +83,10 @@ class ProfileView extends StatelessWidget {
                         //   controller.editUserInfo();
                         // }, child: Text('Save')),
                         InkWell(
-                          onTap: (){ controller.editUserInfo();},
+                          onTap: (){
+                            FocusManager.instance.primaryFocus?.unfocus();
+                            controller.editUserInfo();
+                            },
                             child: Icon(Icons.done,size: 40,color: Colors.black,))
                       ],
                     ),

@@ -45,8 +45,9 @@ class CartView extends StatelessWidget {
                           return controller.cartModel.value.orderItems.isNotEmpty?SizedBox(
                             width: Get.width,
                             child: ListView.builder(
+                              padding: EdgeInsets.only(bottom: 60),
                               shrinkWrap: true,
-                              //physics: const NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: controller.cartModel.value.orderItems.length,
                               itemBuilder: (context , index){
                                 return CartCard(orderItem: controller.cartModel.value.orderItems[index]);
@@ -60,14 +61,17 @@ class CartView extends StatelessWidget {
                 ),
             
             controller.cartModel.value.orderItems.isNotEmpty?Positioned(
-              bottom: 20,
+              bottom: 0,
               child: SizedBox(
                  width: Get.width,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: Get.width*0.5,
+                      color: Colors.grey.shade50,
+                      width: Get.width,
+                      height: 60,
+                      padding: EdgeInsets.symmetric(horizontal: Get.width*0.2,vertical: 10),
                       child: ElevatedButton(
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(Colors.purple),
