@@ -19,15 +19,15 @@ class OrderDetailsReq {
 
 class OrderDetails {
   int? id; //done
-  int? price;
-  int? quantity;
+  int? price;//done
+  int? quantity;//done
   String? data; //done
-  int? accept;
-  String? createdAt;
-  String? productName;
-  int? productId;
-  String? replay;
-  String? replayTitle;
+  int? accept; //done
+  String? createdAt; //done
+  String? productName;//done
+  int? productId; //done
+  String? replay;//done
+  String? replayTitle; //done
 
   OrderDetails(
       {this.id,

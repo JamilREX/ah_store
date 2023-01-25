@@ -10,7 +10,7 @@ class BuyDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.symmetric(
-            horizontal: Get.width * 0.1, vertical: Get.height * 0.27),
+            horizontal: Get.width * 0.1, vertical: Get.height * 0.25),
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
